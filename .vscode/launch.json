@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "(gdb) Server Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            // [핵심] CMake가 build/Server 폴더 안에 만든 실행 파일을 가리켜야 합니다.
+            "program": "${workspaceFolder}/build/Server/Server",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/build/Server",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            // 디버깅 시작 전 자동으로 CMake 빌드를 돌려주는 옵션
+            "preLaunchTask": "CMake: build",
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}

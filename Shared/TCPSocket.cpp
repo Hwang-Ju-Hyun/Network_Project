@@ -14,7 +14,7 @@ int TCPSocket::Bind(const SocketAddress& _inAddress)
     if(result==-1)
     {        
         std::cout<<"Bind Error : "<<strerror(errno)<<std::endl;
-        return -1;
+        return ERROR;
     }
     return result;
 }
@@ -30,7 +30,7 @@ int TCPSocket::Listen(int _inBackLog)
     if(result==-1)
     {        
         std::cout<<"Listen Error : "<<strerror(errno)<<std::endl;
-        return -1;
+        return ERROR;
     }
     return result;
 }
@@ -45,7 +45,7 @@ int TCPSocket::Connect(const SocketAddress& _inAddress)
     if(result==-1)
     {        
         std::cout<<"Connect Error : "<<strerror(errno)<<std::endl;
-        return -1;
+        return ERROR;
     }
     return result;
 }
@@ -79,18 +79,18 @@ int TCPSocket::Send(const void* _inData,size_t _inLen)
     if(SendBytes<0)
     {
         std::cout<<"Semd Error : "<<strerror(errno)<<std::endl;
-        return -1;
+        return ERROR;
     }        
     return SendBytes;
 }
 
-int TCPSocket::Receive(void* _inData,size_t _inLen)
+int TCPSocket::Receive(void* _outData,size_t _inLen)
 {
-    int ReadBytes=recv(m_Socket,static_cast<char*>(_inData),_inLen,0);
+    int ReadBytes=recv(m_Socket,static_cast<char*>(_outData),_inLen,0);
     if( ReadBytes<0)
     {
         std::cout<<"Read Error : "<<strerror(errno)<<std::endl;
-        return -1;
+        return ERROR;
     }        
     return  ReadBytes;
 }

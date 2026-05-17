@@ -1,3 +1,5 @@
+set(CMAKE_BUILD_TYPE Debug)
+
 add_library(Shared STATIC
     SocketAddress.cpp
     SocketUtil.cpp
@@ -6,8 +8,10 @@ add_library(Shared STATIC
     MemoryStream.cpp
     MemoryBitStream.cpp
     LinkingContext.cpp
+    SocketAddressFactory.cpp
 )
 
 target_include_directories(Shared PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
+

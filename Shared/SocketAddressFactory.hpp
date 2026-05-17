@@ -4,6 +4,7 @@
 
 class SocketAddressFactory
 {
+public:
     static SocketAddressPtr CreateIPv4FromString(std::string _inString)
     {
         size_t pos = _inString.find(':');        

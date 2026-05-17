@@ -10,6 +10,7 @@
 
 using SOCKET = unsigned int;
 
+#define ERROR -1
 
 enum PacketType
 {

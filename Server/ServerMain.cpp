@@ -1,7 +1,69 @@
 #include <iostream>
+#include "TCPSocket.hpp"
+#include "SocketUtil.hpp"
+#include <cassert>
+#include "SocketAddressFactory.hpp"
+
+bool g_LOOP=true;
 
 int main()
-{
-    std::cout << "Sserver Start\n";
+{        
+    SocketAddressPtr serverAddr = SocketAddressFactory::CreateIPv4FromString("127.0.0.1:9000");    
+    TCPSocketPtr sockServerTcp=SocketUtil::CreateTCPSocket(AF_INET);
+
+    assert(sockServerTcp->Bind(*serverAddr)!=ERROR);
+
+    assert(sockServerTcp->Listen()!=ERROR);
+
+    std::cout<<"Server: Checking for data"<<std::endl<<std::endl;
+    std::vector<TCPSocketPtr> readBlockSockets;
+    std::vector<TCPSocketPtr> readAbleSockets;
+
+    readBlockSockets.push_back(sockServerTcp);
+
+    while(g_LOOP)
+    {
+
+        if(!SocketUtil::Select(&readBlockSockets,&readAbleSockets,nullptr,nullptr,nullptr,nullptr))
+        {
+            continue;
+        }
+
+        std::vector<TCPSocketPtr> newSockets;
+
+        for(const TCPSocketPtr& socket:readAbleSockets)
+        {
+            // socket = 알바생이 "여기 불 켜졌어요" 하고 들고 온 카메라 주소
+            // sockServerTcp = 우리가 알고 있는 "정문" 카메라 주소
+            if(socket==sockServerTcp)
+            {
+                // "어? 알바생이 들고 온 카메라 주소가 우리 '정문' 주소랑 똑같네?"
+                // 정문 문손잡이가 덜컹거렸다는 뜻이니까 ➔ "아! 새로운 손님이 접속했구나!"
+                SocketAddress newClientAddr;
+                TCPSocketPtr newClientSock=sockServerTcp->Accept(newClientAddr);
+                if(newClientSock)
+                {
+                    std::cout<<"New Client Connected : "<<newClientAddr.ToString()<<std::endl;
+                    newSockets.push_back(newClientSock);
+                }
+            }
+            else
+            {
+                char segment[1500];
+                int dataRecevied = socket->Receive(segment,1500);
+                if(dataRecevied>0)
+                {
+                    std::cout<<"Data Recevied : "<<segment<<std::endl;
+                }
+
+            }                    
+        }
+        for(const auto& ns:newSockets)
+        {
+            readBlockSockets.push_back(ns);
+        }
+    }
+    
+
     return 0;
 }

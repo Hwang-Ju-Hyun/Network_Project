@@ -14,7 +14,7 @@ public:
     int Connect(const SocketAddress& _inAddress);    
     TCPSocketPtr Accept(SocketAddress& _fromAddress);
     int Send(const void* _inData,size_t _inLen);
-    int Receive(void* _inData,size_t _inLen);   
+    int Receive(void* _outData,size_t _inLen);   
 private:
     SOCKET m_Socket;
     TCPSocket(SOCKET _socket);

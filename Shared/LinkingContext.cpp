@@ -11,7 +11,7 @@ LinkingContext::~LinkingContext(){}
 uint32_t LinkingContext::GetNetworkID(Object* _obj)
 {
     auto iter=m_ObjectToNetworkId.find(_obj);
-
+    
     if(iter!=m_ObjectToNetworkId.end())
     {
         return iter->second;
@@ -43,4 +43,3 @@ void LinkingContext::RemoveObject(Object* _inObject)
     m_ObjectToNetworkId.erase(_inObject);
     m_NetworkIdToObject.erase(networkID);    
 }
-
