@@ -1,0 +1,59 @@
+#pragma once
+#include "header.hpp"
+#include <vector>
+#include "LinkingContext.hpp"
+
+class Object;
+
+
+class OutputMemoryStream
+{
+public:
+    OutputMemoryStream();
+    ~OutputMemoryStream();
+private:
+    void ReallocBuffer(uint32_t _inNewLength);
+private:
+    uint32_t m_Head;
+    uint32_t m_Capacity;
+    char* m_Buffer;
+public:
+    const char* GetBuffer()const{return m_Buffer;}
+    uint32_t GetLength()const {return m_Head;}
+public:
+    void Write(const void* _inData,uint32_t _inByteCounts);    
+    void Write(uint32_t _inData){Write(&_inData,sizeof(uint32_t));}
+    void Write(int _inData){Write(&_inData,sizeof(int));}
+    void Write(size_t _inData){Write(&_inData,sizeof(size_t));}
+    void Write(std::vector<int> _inData);
+
+    void Write(Object* _inObj);
+private:
+    LinkingContext m_LinkingContext;
+};
+
+
+class InputMemoryStream
+{
+public:
+    InputMemoryStream(char* _inBuffer,uint32_t _inByteCount);
+    ~InputMemoryStream();    
+private:
+    uint32_t m_Head;
+    uint32_t m_Capacity;
+    char* m_Buffer;
+public:
+    const char* GetBuffer()const{return m_Buffer;}
+    uint32_t GetLength()const {return m_Head;}
+public:
+    void Read(void* _outData,uint32_t _inByteCounts);
+    void Read(uint32_t _outData){Read(&_outData,sizeof(_outData));}
+    void Read(int _outData){Read(&_outData,sizeof(int));}
+    void Read(size_t _outData){Read(&_outData,sizeof(size_t));}
+    void Read(std::vector<int> _outData);
+    void Read(Object* _outObj);
+public:
+    uint32_t GetRemainDataSize(){return m_Capacity-m_Head;}
+private:
+    LinkingContext m_LinkingContext;
+};
