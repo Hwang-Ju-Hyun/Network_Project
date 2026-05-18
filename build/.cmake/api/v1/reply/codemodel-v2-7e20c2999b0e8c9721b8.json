@@ -91,7 +91,7 @@
 				{
 					"directoryIndex" : 2,
 					"id" : "Client::@39d0ae6511a0d9878f7b",
-					"jsonFile" : "target-Client-Debug-ac5907435ecd5be5d9a9.json",
+					"jsonFile" : "target-Client-Debug-f6d18d5ad94248477286.json",
 					"name" : "Client",
 					"projectIndex" : 0
 				},
@@ -105,7 +105,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "Shared::@a5a0faf7a4ef51a63049",
-					"jsonFile" : "target-Shared-Debug-c16a88fe8560db66e944.json",
+					"jsonFile" : "target-Shared-Debug-47b87f5396d9b2245c9b.json",
 					"name" : "Shared",
 					"projectIndex" : 0
 				}
