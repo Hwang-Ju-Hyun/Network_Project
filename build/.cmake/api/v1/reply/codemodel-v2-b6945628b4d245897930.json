@@ -91,21 +91,21 @@
 				{
 					"directoryIndex" : 2,
 					"id" : "Client::@39d0ae6511a0d9878f7b",
-					"jsonFile" : "target-Client-Debug-878d6fa1742670e6afe6.json",
+					"jsonFile" : "target-Client-Debug-ac5907435ecd5be5d9a9.json",
 					"name" : "Client",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 3,
 					"id" : "Server::@20a40c4b36ca103854cb",
-					"jsonFile" : "target-Server-Debug-e041a1c8edceb3676fb9.json",
+					"jsonFile" : "target-Server-Debug-21741cd7ac9864f3860c.json",
 					"name" : "Server",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 1,
 					"id" : "Shared::@a5a0faf7a4ef51a63049",
-					"jsonFile" : "target-Shared-Debug-657006ad87fe850c0125.json",
+					"jsonFile" : "target-Shared-Debug-c16a88fe8560db66e944.json",
 					"name" : "Shared",
 					"projectIndex" : 0
 				}
@@ -115,8 +115,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/hjh/Mini_Project_Network/build",
-		"source" : "/home/hjh/Mini_Project_Network"
+		"build" : "/home/hwang-juhyun/Network_Project_Test/Network_Project/build",
+		"source" : "/home/hwang-juhyun/Network_Project_Test/Network_Project"
 	},
 	"version" : 
 	{

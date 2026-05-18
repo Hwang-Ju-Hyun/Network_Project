@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/hjh/Mini_Project_Network/Server/build"
+			"value" : "/home/hwang-juhyun/Network_Project_Test/Network_Project/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -92,22 +92,6 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "3"
-		},
-		{
-			"name" : "CMAKE_COLOR_MAKEFILE",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Enable/Disable color output during build."
-				}
-			],
-			"type" : "BOOL",
-			"value" : "ON"
 		},
 		{
 			"name" : "CMAKE_COMMAND",
@@ -155,10 +139,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "CXX compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/g++"
 		},
 		{
@@ -283,10 +267,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "C compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/gcc"
 		},
 		{
@@ -543,7 +527,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/hjh/Mini_Project_Network/Server/build/CMakeFiles/pkgRedirects"
+			"value" : "/home/hwang-juhyun/Network_Project_Test/Network_Project/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -555,7 +539,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "Unix Makefiles"
+			"value" : "Ninja"
 		},
 		{
 			"name" : "CMAKE_GENERATOR_INSTANCE",
@@ -603,7 +587,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/hjh/Mini_Project_Network/Server"
+			"value" : "/home/hwang-juhyun/Network_Project_Test/Network_Project"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -655,11 +639,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "Path to a program."
+					"value" : "Program used to build from build.ninja files."
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gmake"
+			"value" : "/usr/bin/ninja"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -767,7 +751,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "1"
+			"value" : "4"
 		},
 		{
 			"name" : "CMAKE_OBJCOPY",
@@ -847,7 +831,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "Project"
+			"value" : "Mini_Project_Network"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1146,7 +1130,7 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "Project_BINARY_DIR",
+			"name" : "Mini_Project_Network_BINARY_DIR",
 			"properties" : 
 			[
 				{
@@ -1155,10 +1139,10 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/hjh/Mini_Project_Network/Server/build"
+			"value" : "/home/hwang-juhyun/Network_Project_Test/Network_Project/build"
 		},
 		{
-			"name" : "Project_IS_TOP_LEVEL",
+			"name" : "Mini_Project_Network_IS_TOP_LEVEL",
 			"properties" : 
 			[
 				{
@@ -1170,7 +1154,7 @@
 			"value" : "ON"
 		},
 		{
-			"name" : "Project_SOURCE_DIR",
+			"name" : "Mini_Project_Network_SOURCE_DIR",
 			"properties" : 
 			[
 				{
@@ -1179,7 +1163,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/hjh/Mini_Project_Network/Server"
+			"value" : "/home/hwang-juhyun/Network_Project_Test/Network_Project"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",

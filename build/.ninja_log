@@ -1,0 +1,18 @@
+# ninja log v5
+1	257	1779078497665176368	Shared/CMakeFiles/Shared.dir/SocketAddressFactory.cpp.o	b4fb62c514f33f09
+365	456	1779079326006673198	Client/Client	695c2ba2086c6559
+0	271	1779078497679576368	Shared/CMakeFiles/Shared.dir/SocketAddress.cpp.o	717b97f05042c7a1
+0	357	1779078497765976368	Shared/CMakeFiles/Shared.dir/TCPSocket.cpp.o	1e053bea0671873f
+426	447	1779078497855976368	Shared/libShared.a	88590207d556566a
+3	365	1779079325913073198	Client/CMakeFiles/Client.dir/ClientMain.cpp.o	58801769a2042906
+1	426	1779078497834376368	Shared/CMakeFiles/Shared.dir/MemoryStream.cpp.o	37fceb6558cefc9
+428	533	1779078903540790683	Server/Server	37fdc257cd7c9772
+1	309	1779078497719176368	Shared/CMakeFiles/Shared.dir/MemoryBitStream.cpp.o	6671dc76d0a405ab
+1	336	1779078497747976368	Shared/CMakeFiles/Shared.dir/LinkingContext.cpp.o	4befa56e86b15114
+0	379	1779078497787576368	Shared/CMakeFiles/Shared.dir/SocketUtil.cpp.o	75abff33eecea8d0
+1	380	1779078497787576368	Shared/CMakeFiles/Shared.dir/UDPSocket.cpp.o	f014996f7932d6af
+2	428	1779078903436390683	Server/CMakeFiles/Server.dir/ServerMain.cpp.o	1404a6679cb43617
+1	431	1779080232958167892	Server/CMakeFiles/Server.dir/ServerMain.cpp.o	1404a6679cb43617
+431	557	1779080233087767892	Server/Server	37fdc257cd7c9772
+1	283	1779080242714167892	Client/CMakeFiles/Client.dir/ClientMain.cpp.o	58801769a2042906
+283	365	1779080242800567892	Client/Client	695c2ba2086c6559

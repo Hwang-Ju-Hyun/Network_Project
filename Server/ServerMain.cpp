@@ -55,15 +55,13 @@ int main()
                 {
                     std::cout<<"Data Recevied : "<<segment<<std::endl;
                 }
-
             }                    
         }
         for(const auto& ns:newSockets)
         {
             readBlockSockets.push_back(ns);
         }
-    }
-    
+    }    
 
     return 0;
 }
