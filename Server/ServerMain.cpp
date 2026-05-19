@@ -3,6 +3,7 @@
 #include "SocketUtil.hpp"
 #include <cassert>
 #include "SocketAddressFactory.hpp"
+#include "ClientSession.hpp"
 
 bool g_LOOP=true;
 
@@ -18,9 +19,11 @@ int main()
     std::cout<<"Server: Checking for data"<<std::endl<<std::endl;
     std::vector<TCPSocketPtr> readBlockSockets;
     std::vector<TCPSocketPtr> readAbleSockets;
+    std::vector<ClientSessionPtr> clientSessions;
 
     readBlockSockets.push_back(sockServerTcp);
 
+    uint32_t nextClientSessionID=1;
     while(g_LOOP)
     {
 
@@ -45,16 +48,41 @@ int main()
                 {
                     std::cout<<"New Client Connected : "<<newClientAddr.ToString()<<std::endl;
                     newSockets.push_back(newClientSock);
+                    
+                    ClientSessionPtr cs=std::make_shared<ClientSession>(newSockets,nextClientSessionID);
+                    nextClientSessionID++;
+                    clientSessions.push_back(cs);
                 }
             }
             else
             {
-                char segment[1500];
-                int dataRecevied = socket->Receive(segment,1500);
-                if(dataRecevied>0)
+                ClientSessionPtr currentClientSession=nullptr;
+                int foundIdx=-1;
+                for(int i=0;i<clientSessions.size();i++)
                 {
-                    std::cout<<"Data Recevied : "<<segment<<std::endl;
+                    if(clientSessions[i]->GetSocket()->GetSocket()==socket->GetSocket())
+                    {
+                        currentClientSession=clientSessions[i];
+                        foundIdx=clientSessions[i]->GetSessionID();
+                        break;
+                    }
                 }
+                if(currentClientSession!=nullptr)
+                {
+                    
+                    bool isAlive=currentClientSession->ProcessIncomingData();
+
+                    if(!isAlive)
+                    {
+                        std::cout<<"ㅈ됬노 ㅅㅂ"<<std::endl;
+                    }                    
+                }
+                // char segment[1500];
+                // int dataRecevied = socket->Receive(segment,1500);
+                // if(dataRecevied>0)
+                // {
+                //     std::cout<<"Data Recevied : "<<segment<<std::endl;
+                // }
             }                    
         }
         for(const auto& ns:newSockets)

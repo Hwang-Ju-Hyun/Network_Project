@@ -19,4 +19,6 @@ private:
     SOCKET m_Socket;
     TCPSocket(SOCKET _socket);
     friend class SocketUtil;
+public:
+    SOCKET GetSocket()const{return m_Socket;}
 };

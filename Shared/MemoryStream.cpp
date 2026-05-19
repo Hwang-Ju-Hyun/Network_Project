@@ -8,7 +8,7 @@ OutputMemoryStream::OutputMemoryStream()
     ,m_Head(0)
     ,m_Capacity(0)
 {
-
+    ReallocBuffer(1500);
 }
 
 OutputMemoryStream::~OutputMemoryStream()

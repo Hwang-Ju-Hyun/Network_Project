@@ -86,11 +86,11 @@ int TCPSocket::Send(const void* _inData,size_t _inLen)
 
 int TCPSocket::Receive(void* _outData,size_t _inLen)
 {
-    int ReadBytes=recv(m_Socket,static_cast<char*>(_outData),_inLen,0);
-    if( ReadBytes<0)
+    int ReadBytesCount=recv(m_Socket,static_cast<char*>(_outData),_inLen,0);
+    if( ReadBytesCount<0)
     {
         std::cout<<"Read Error : "<<strerror(errno)<<std::endl;
         return ERROR;
     }        
-    return  ReadBytes;
+    return  ReadBytesCount;
 }

@@ -19,7 +19,7 @@ private:
     char* m_Buffer;
 public:
     const char* GetBuffer()const{return m_Buffer;}
-    uint32_t GetLength()const {return m_Head;}
+    uint32_t GetLength()const {return m_Head;}    
 public:
     void Write(const void* _inData,uint32_t _inByteCounts);    
     void Write(uint32_t _inData){Write(&_inData,sizeof(uint32_t));}
