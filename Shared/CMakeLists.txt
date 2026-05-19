@@ -13,6 +13,7 @@ add_library(Shared STATIC
     Robo.cpp    
     World.cpp
     Map.cpp
+    ClientSession.cpp
 )
 
 target_include_directories(Shared PUBLIC

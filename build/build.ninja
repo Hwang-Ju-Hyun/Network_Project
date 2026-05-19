@@ -161,6 +161,13 @@ build Shared/CMakeFiles/Shared.dir/Map.cpp.o: CXX_COMPILER__Shared_unscanned_Deb
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
 
+build Shared/CMakeFiles/Shared.dir/ClientSession.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/ClientSession.cpp || cmake_object_order_depends_target_Shared
+  DEP_FILE = Shared/CMakeFiles/Shared.dir/ClientSession.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
+  OBJECT_DIR = Shared/CMakeFiles/Shared.dir
+  OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target Shared
@@ -169,7 +176,7 @@ build Shared/CMakeFiles/Shared.dir/Map.cpp.o: CXX_COMPILER__Shared_unscanned_Deb
 #############################################
 # Link the static library Shared/libShared.a
 
-build Shared/libShared.a: CXX_STATIC_LIBRARY_LINKER__Shared_Debug Shared/CMakeFiles/Shared.dir/SocketAddress.cpp.o Shared/CMakeFiles/Shared.dir/SocketUtil.cpp.o Shared/CMakeFiles/Shared.dir/TCPSocket.cpp.o Shared/CMakeFiles/Shared.dir/UDPSocket.cpp.o Shared/CMakeFiles/Shared.dir/MemoryStream.cpp.o Shared/CMakeFiles/Shared.dir/MemoryBitStream.cpp.o Shared/CMakeFiles/Shared.dir/LinkingContext.cpp.o Shared/CMakeFiles/Shared.dir/SocketAddressFactory.cpp.o Shared/CMakeFiles/Shared.dir/Object.cpp.o Shared/CMakeFiles/Shared.dir/Robo.cpp.o Shared/CMakeFiles/Shared.dir/World.cpp.o Shared/CMakeFiles/Shared.dir/Map.cpp.o
+build Shared/libShared.a: CXX_STATIC_LIBRARY_LINKER__Shared_Debug Shared/CMakeFiles/Shared.dir/SocketAddress.cpp.o Shared/CMakeFiles/Shared.dir/SocketUtil.cpp.o Shared/CMakeFiles/Shared.dir/TCPSocket.cpp.o Shared/CMakeFiles/Shared.dir/UDPSocket.cpp.o Shared/CMakeFiles/Shared.dir/MemoryStream.cpp.o Shared/CMakeFiles/Shared.dir/MemoryBitStream.cpp.o Shared/CMakeFiles/Shared.dir/LinkingContext.cpp.o Shared/CMakeFiles/Shared.dir/SocketAddressFactory.cpp.o Shared/CMakeFiles/Shared.dir/Object.cpp.o Shared/CMakeFiles/Shared.dir/Robo.cpp.o Shared/CMakeFiles/Shared.dir/World.cpp.o Shared/CMakeFiles/Shared.dir/Map.cpp.o Shared/CMakeFiles/Shared.dir/ClientSession.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   POST_BUILD = :

@@ -49,7 +49,7 @@ int main()
                     std::cout<<"New Client Connected : "<<newClientAddr.ToString()<<std::endl;
                     newSockets.push_back(newClientSock);
                     
-                    ClientSessionPtr cs=std::make_shared<ClientSession>(newSockets,nextClientSessionID);
+                    ClientSessionPtr cs=std::make_shared<ClientSession>(newClientSock,nextClientSessionID);
                     nextClientSessionID++;
                     clientSessions.push_back(cs);
                 }

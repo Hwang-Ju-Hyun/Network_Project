@@ -4,8 +4,9 @@
 class World
 {
 private:
-    World();
-    ~World();
+    World(){}
+public:
+    ~World(){}
 public:
     static std::unique_ptr<World> sInstance;
     static void StaticInit();

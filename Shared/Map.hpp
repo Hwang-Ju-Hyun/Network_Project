@@ -8,8 +8,7 @@
 class Map : public Object
 {
 private:
-    Map();    
-    ~Map();
+    Map();        
 public: 
     CLASS_IDENTIFICATION('MAP',Map);
 public:

@@ -4,8 +4,3 @@ void World::StaticInit()
 {
     sInstance.reset(new World());
 }
-
-World::World()
-{    
-}
-

@@ -1,4 +1,4 @@
-#include "header.hpp"
+#pragma once
 #include "TCPSocket.hpp"
 #include <vector>
 
