@@ -2,6 +2,7 @@ set(CMAKE_BUILD_TYPE Debug)
 
 add_executable(Server
     ServerMain.cpp
+    NetworkManagerServer.cpp    
 )
 
 target_link_libraries(Server PRIVATE Shared)

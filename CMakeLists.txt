@@ -7,6 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_BUILD_TYPE Debug)
 
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
 add_subdirectory(Shared)
 add_subdirectory(Client)
 add_subdirectory(Server)
+

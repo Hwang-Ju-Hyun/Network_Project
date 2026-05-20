@@ -79,91 +79,105 @@ build cmake_object_order_depends_target_Shared: phony || Shared/CMakeFiles/Share
 
 build Shared/CMakeFiles/Shared.dir/SocketAddress.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/SocketAddress.cpp || cmake_object_order_depends_target_Shared
   DEP_FILE = Shared/CMakeFiles/Shared.dir/SocketAddress.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIC
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
 
 build Shared/CMakeFiles/Shared.dir/SocketUtil.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/SocketUtil.cpp || cmake_object_order_depends_target_Shared
   DEP_FILE = Shared/CMakeFiles/Shared.dir/SocketUtil.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIC
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
 
 build Shared/CMakeFiles/Shared.dir/TCPSocket.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/TCPSocket.cpp || cmake_object_order_depends_target_Shared
   DEP_FILE = Shared/CMakeFiles/Shared.dir/TCPSocket.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIC
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
 
 build Shared/CMakeFiles/Shared.dir/UDPSocket.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/UDPSocket.cpp || cmake_object_order_depends_target_Shared
   DEP_FILE = Shared/CMakeFiles/Shared.dir/UDPSocket.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIC
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
 
 build Shared/CMakeFiles/Shared.dir/MemoryStream.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/MemoryStream.cpp || cmake_object_order_depends_target_Shared
   DEP_FILE = Shared/CMakeFiles/Shared.dir/MemoryStream.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIC
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
 
 build Shared/CMakeFiles/Shared.dir/MemoryBitStream.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/MemoryBitStream.cpp || cmake_object_order_depends_target_Shared
   DEP_FILE = Shared/CMakeFiles/Shared.dir/MemoryBitStream.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIC
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
 
 build Shared/CMakeFiles/Shared.dir/LinkingContext.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/LinkingContext.cpp || cmake_object_order_depends_target_Shared
   DEP_FILE = Shared/CMakeFiles/Shared.dir/LinkingContext.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIC
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
 
 build Shared/CMakeFiles/Shared.dir/SocketAddressFactory.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/SocketAddressFactory.cpp || cmake_object_order_depends_target_Shared
   DEP_FILE = Shared/CMakeFiles/Shared.dir/SocketAddressFactory.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIC
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
 
 build Shared/CMakeFiles/Shared.dir/Object.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/Object.cpp || cmake_object_order_depends_target_Shared
   DEP_FILE = Shared/CMakeFiles/Shared.dir/Object.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIC
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
 
 build Shared/CMakeFiles/Shared.dir/Robo.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/Robo.cpp || cmake_object_order_depends_target_Shared
   DEP_FILE = Shared/CMakeFiles/Shared.dir/Robo.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIC
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
 
 build Shared/CMakeFiles/Shared.dir/World.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/World.cpp || cmake_object_order_depends_target_Shared
   DEP_FILE = Shared/CMakeFiles/Shared.dir/World.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIC
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
 
 build Shared/CMakeFiles/Shared.dir/Map.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/Map.cpp || cmake_object_order_depends_target_Shared
   DEP_FILE = Shared/CMakeFiles/Shared.dir/Map.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIC
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
 
 build Shared/CMakeFiles/Shared.dir/ClientSession.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/ClientSession.cpp || cmake_object_order_depends_target_Shared
   DEP_FILE = Shared/CMakeFiles/Shared.dir/ClientSession.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIC
+  INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
+  OBJECT_DIR = Shared/CMakeFiles/Shared.dir
+  OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
+
+build Shared/CMakeFiles/Shared.dir/NetworkManager.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/NetworkManager.cpp || cmake_object_order_depends_target_Shared
+  DEP_FILE = Shared/CMakeFiles/Shared.dir/NetworkManager.cpp.o.d
+  FLAGS = -g -std=gnu++17 -fPIC
+  INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
+  OBJECT_DIR = Shared/CMakeFiles/Shared.dir
+  OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
+
+build Shared/CMakeFiles/Shared.dir/ObjectRegistry.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/ObjectRegistry.cpp || cmake_object_order_depends_target_Shared
+  DEP_FILE = Shared/CMakeFiles/Shared.dir/ObjectRegistry.cpp.o.d
+  FLAGS = -g -std=gnu++17 -fPIC
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
@@ -176,7 +190,7 @@ build Shared/CMakeFiles/Shared.dir/ClientSession.cpp.o: CXX_COMPILER__Shared_uns
 #############################################
 # Link the static library Shared/libShared.a
 
-build Shared/libShared.a: CXX_STATIC_LIBRARY_LINKER__Shared_Debug Shared/CMakeFiles/Shared.dir/SocketAddress.cpp.o Shared/CMakeFiles/Shared.dir/SocketUtil.cpp.o Shared/CMakeFiles/Shared.dir/TCPSocket.cpp.o Shared/CMakeFiles/Shared.dir/UDPSocket.cpp.o Shared/CMakeFiles/Shared.dir/MemoryStream.cpp.o Shared/CMakeFiles/Shared.dir/MemoryBitStream.cpp.o Shared/CMakeFiles/Shared.dir/LinkingContext.cpp.o Shared/CMakeFiles/Shared.dir/SocketAddressFactory.cpp.o Shared/CMakeFiles/Shared.dir/Object.cpp.o Shared/CMakeFiles/Shared.dir/Robo.cpp.o Shared/CMakeFiles/Shared.dir/World.cpp.o Shared/CMakeFiles/Shared.dir/Map.cpp.o Shared/CMakeFiles/Shared.dir/ClientSession.cpp.o
+build Shared/libShared.a: CXX_STATIC_LIBRARY_LINKER__Shared_Debug Shared/CMakeFiles/Shared.dir/SocketAddress.cpp.o Shared/CMakeFiles/Shared.dir/SocketUtil.cpp.o Shared/CMakeFiles/Shared.dir/TCPSocket.cpp.o Shared/CMakeFiles/Shared.dir/UDPSocket.cpp.o Shared/CMakeFiles/Shared.dir/MemoryStream.cpp.o Shared/CMakeFiles/Shared.dir/MemoryBitStream.cpp.o Shared/CMakeFiles/Shared.dir/LinkingContext.cpp.o Shared/CMakeFiles/Shared.dir/SocketAddressFactory.cpp.o Shared/CMakeFiles/Shared.dir/Object.cpp.o Shared/CMakeFiles/Shared.dir/Robo.cpp.o Shared/CMakeFiles/Shared.dir/World.cpp.o Shared/CMakeFiles/Shared.dir/Map.cpp.o Shared/CMakeFiles/Shared.dir/ClientSession.cpp.o Shared/CMakeFiles/Shared.dir/NetworkManager.cpp.o Shared/CMakeFiles/Shared.dir/ObjectRegistry.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   POST_BUILD = :
@@ -223,21 +237,28 @@ build cmake_object_order_depends_target_Client: phony || cmake_object_order_depe
 
 build Client/CMakeFiles/Client.dir/ClientMain.cpp.o: CXX_COMPILER__Client_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Client/ClientMain.cpp || cmake_object_order_depends_target_Client
   DEP_FILE = Client/CMakeFiles/Client.dir/ClientMain.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIE
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Client/CMakeFiles/Client.dir
   OBJECT_FILE_DIR = Client/CMakeFiles/Client.dir
 
 build Client/CMakeFiles/Client.dir/RenderManager.cpp.o: CXX_COMPILER__Client_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Client/RenderManager.cpp || cmake_object_order_depends_target_Client
   DEP_FILE = Client/CMakeFiles/Client.dir/RenderManager.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIE
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Client/CMakeFiles/Client.dir
   OBJECT_FILE_DIR = Client/CMakeFiles/Client.dir
 
 build Client/CMakeFiles/Client.dir/Client.cpp.o: CXX_COMPILER__Client_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Client/Client.cpp || cmake_object_order_depends_target_Client
   DEP_FILE = Client/CMakeFiles/Client.dir/Client.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIE
+  INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
+  OBJECT_DIR = Client/CMakeFiles/Client.dir
+  OBJECT_FILE_DIR = Client/CMakeFiles/Client.dir
+
+build Client/CMakeFiles/Client.dir/NetworkManagerClient.cpp.o: CXX_COMPILER__Client_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Client/NetworkManagerClient.cpp || cmake_object_order_depends_target_Client
+  DEP_FILE = Client/CMakeFiles/Client.dir/NetworkManagerClient.cpp.o.d
+  FLAGS = -g -std=gnu++17 -fPIE
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Client/CMakeFiles/Client.dir
   OBJECT_FILE_DIR = Client/CMakeFiles/Client.dir
@@ -250,7 +271,7 @@ build Client/CMakeFiles/Client.dir/Client.cpp.o: CXX_COMPILER__Client_unscanned_
 #############################################
 # Link the executable Client/Client
 
-build Client/Client: CXX_EXECUTABLE_LINKER__Client_Debug Client/CMakeFiles/Client.dir/ClientMain.cpp.o Client/CMakeFiles/Client.dir/RenderManager.cpp.o Client/CMakeFiles/Client.dir/Client.cpp.o | Shared/libShared.a || Shared/libShared.a
+build Client/Client: CXX_EXECUTABLE_LINKER__Client_Debug Client/CMakeFiles/Client.dir/ClientMain.cpp.o Client/CMakeFiles/Client.dir/RenderManager.cpp.o Client/CMakeFiles/Client.dir/Client.cpp.o Client/CMakeFiles/Client.dir/NetworkManagerClient.cpp.o | Shared/libShared.a || Shared/libShared.a
   FLAGS = -g
   LINK_LIBRARIES = Shared/libShared.a
   OBJECT_DIR = Client/CMakeFiles/Client.dir
@@ -298,7 +319,14 @@ build cmake_object_order_depends_target_Server: phony || cmake_object_order_depe
 
 build Server/CMakeFiles/Server.dir/ServerMain.cpp.o: CXX_COMPILER__Server_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Server/ServerMain.cpp || cmake_object_order_depends_target_Server
   DEP_FILE = Server/CMakeFiles/Server.dir/ServerMain.cpp.o.d
-  FLAGS = -g -std=gnu++17
+  FLAGS = -g -std=gnu++17 -fPIE
+  INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
+  OBJECT_DIR = Server/CMakeFiles/Server.dir
+  OBJECT_FILE_DIR = Server/CMakeFiles/Server.dir
+
+build Server/CMakeFiles/Server.dir/NetworkManagerServer.cpp.o: CXX_COMPILER__Server_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Server/NetworkManagerServer.cpp || cmake_object_order_depends_target_Server
+  DEP_FILE = Server/CMakeFiles/Server.dir/NetworkManagerServer.cpp.o.d
+  FLAGS = -g -std=gnu++17 -fPIE
   INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
   OBJECT_DIR = Server/CMakeFiles/Server.dir
   OBJECT_FILE_DIR = Server/CMakeFiles/Server.dir
@@ -311,7 +339,7 @@ build Server/CMakeFiles/Server.dir/ServerMain.cpp.o: CXX_COMPILER__Server_unscan
 #############################################
 # Link the executable Server/Server
 
-build Server/Server: CXX_EXECUTABLE_LINKER__Server_Debug Server/CMakeFiles/Server.dir/ServerMain.cpp.o | Shared/libShared.a || Shared/libShared.a
+build Server/Server: CXX_EXECUTABLE_LINKER__Server_Debug Server/CMakeFiles/Server.dir/ServerMain.cpp.o Server/CMakeFiles/Server.dir/NetworkManagerServer.cpp.o | Shared/libShared.a || Shared/libShared.a
   FLAGS = -g
   LINK_LIBRARIES = Shared/libShared.a
   OBJECT_DIR = Server/CMakeFiles/Server.dir

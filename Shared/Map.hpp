@@ -15,7 +15,7 @@ public:
     static std::unique_ptr<Map> sInstance;
     static void StaticInit();
 private:
-    static std::vector<std::vector<char>> m_map;
+    std::vector<std::vector<char>> m_map;
 public:
-    static std::vector<std::vector<char>> GetMap();
+    std::vector<std::vector<char>> GetMap();
 };

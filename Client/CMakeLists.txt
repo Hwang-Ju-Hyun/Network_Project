@@ -4,8 +4,7 @@ add_executable(Client
     ClientMain.cpp
     RenderManager.cpp
     Client.cpp
+    NetworkManagerClient.cpp
 )
 
 target_link_libraries(Client PRIVATE Shared)
-
-set(CMAKE_BUILD_TYPE Debug)

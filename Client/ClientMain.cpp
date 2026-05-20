@@ -4,32 +4,37 @@
 #include "TCPSocket.hpp"
 #include <cassert>
 #include "MemoryStream.hpp"
-
+#include "NetworkManagerClient.hpp"
+#include "ClientSession.hpp"
 
 int main()
 { 
-    const std::string destination="127.0.0.1:9000";
+    NetworkManager::sInstance=new NetworkManagerClient();
+
+    const std::string destination="127.0.0.1:9999";
     SocketAddressPtr dest_sock_addr= SocketAddressFactory::CreateIPv4FromString(destination);
     TCPSocketPtr tcp_sock = SocketUtil::CreateTCPSocket(AF_INET);
-    
-    assert(tcp_sock->Connect(*dest_sock_addr)!=ERROR);        
+
+    assert(tcp_sock->Connect(*dest_sock_addr)!=ERROR);            
+
+    ClientSession* serverSession=new ClientSession(tcp_sock,40);
 
     std::string data;
-    data="Hello I'm Client";       
-    //tcp_sock->Send(data.c_str(),static_cast<size_t>(data.length()+1));    
-
+    data="Hello I'm Client";               
 
     OutputMemoryStream payloadStream;
-    uint32_t packetType=PacketType::PT_Hello;
-    payloadStream.Write(&packetType,sizeof(packetType));    
-    uint16_t totalPacketSize = static_cast<uint16_t>(sizeof(uint16_t) + payloadStream.GetLength());
-    
-    OutputMemoryStream finalPacketStream;
-    finalPacketStream.Write(&totalPacketSize, sizeof(uint16_t)); // 전체 길이 기록
-    finalPacketStream.Write(payloadStream.GetBuffer(), payloadStream.GetLength()); // 페이로드 붙이기
+    uint8_t packetType=PacketType::PT_Hello;
+        
+    payloadStream.Write(packetType);
+    payloadStream.Write(data.c_str(),data.length());
+    serverSession->SendPacket(payloadStream);    
 
-    // 4. 최종 스트림 전송
-    tcp_sock->Send(finalPacketStream.GetBuffer(), finalPacketStream.GetLength());
+
+    while(true)
+    {
+        serverSession->ProcessIncomingData();
+    }
     
+
     return 0;
 }

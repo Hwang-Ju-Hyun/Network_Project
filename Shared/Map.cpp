@@ -18,7 +18,7 @@ Map::Map()
     }   
 }
 
-std::vector<std::vector<char>>Map :: GetMap()
+std::vector<std::vector<char>>Map::GetMap()
 {
     return m_map;
 }

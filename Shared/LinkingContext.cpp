@@ -1,4 +1,5 @@
 #include "LinkingContext.hpp"
+#include "header.hpp"
 #include <assert.h>
 
 LinkingContext::LinkingContext()
@@ -17,7 +18,7 @@ uint32_t LinkingContext::GetNetworkID(Object* _obj)
         return iter->second;
     }
 
-    return iter->second;
+    return ERROR;
 }
 
 Object* LinkingContext::GetObject(uint32_t _networkId)

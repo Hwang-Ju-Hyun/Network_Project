@@ -2,6 +2,7 @@
 #include "TCPSocket.hpp"
 #include <vector>
 
+class SocketAddress;
 class InputMemoryStream;
 class OutputMemoryStream;
 
@@ -10,18 +11,18 @@ class ClientSession
 {
 private:
     TCPSocketPtr m_Socket;
-    uint32_t m_SessionID;
-
+    uint32_t m_SessionID;    
     // 수신 버퍼: TCP 특성상 쪼개져서 오는 데이터를 임시로 모아두는 공간    
-    std::vector<char> m_ReceiveBuffer;
+    std::vector<char> m_ReceiveBuffer;    
 public:    
     ClientSession(TCPSocketPtr _socket,uint32_t _sessionID);
-    bool ProcessIncomingData();
-    void HandlePacket(PacketType _pt,InputMemoryStream& _stream);
+    bool ProcessIncomingData();    
     void SendPacket(OutputMemoryStream& _payLoadStream);
 public:
     TCPSocketPtr GetSocket()const{return m_Socket;}
-    uint32_t GetSessionID()const{return m_SessionID;}    
+    uint32_t GetSessionID()const{return m_SessionID;}          
+
+    void SetSessionID(uint32_t _sessionID){m_SessionID=_sessionID;}
 };
 
 using ClientSessionPtr=std::shared_ptr<ClientSession>;

@@ -10,9 +10,8 @@ class ObjectRegistry
 private:
     ObjectRegistry();
     std::unordered_map<uint32_t,ObjectCreationFunc> m_NameToObjectCreationFuncMap;
-
-    static std::unique_ptr<ObjectRegistry> sInstance;
 public:
+    static std::unique_ptr<ObjectRegistry> sInstance;
     static void StaticInit();    
     void RegisterCreationFunction(uint32_t _inClassName,ObjectCreationFunc _inCreationFunction);
 

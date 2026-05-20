@@ -4,12 +4,14 @@
 #include <cassert>
 #include "SocketAddressFactory.hpp"
 #include "ClientSession.hpp"
+#include "NetworkManager.hpp"
+#include "NetworkManagerServer.hpp"
 
 bool g_LOOP=true;
 
 int main()
 {        
-    SocketAddressPtr serverAddr = SocketAddressFactory::CreateIPv4FromString("127.0.0.1:9000");    
+    SocketAddressPtr serverAddr = SocketAddressFactory::CreateIPv4FromString("127.0.0.1:9999");    
     TCPSocketPtr sockServerTcp=SocketUtil::CreateTCPSocket(AF_INET);
 
     assert(sockServerTcp->Bind(*serverAddr)!=ERROR);
@@ -24,6 +26,9 @@ int main()
     readBlockSockets.push_back(sockServerTcp);
 
     uint32_t nextClientSessionID=1;
+
+    NetworkManager::sInstance = new NetworkManagerServer();
+
     while(g_LOOP)
     {
 
@@ -76,13 +81,7 @@ int main()
                     {
                         std::cout<<"ㅈ됬노 ㅅㅂ"<<std::endl;
                     }                    
-                }
-                // char segment[1500];
-                // int dataRecevied = socket->Receive(segment,1500);
-                // if(dataRecevied>0)
-                // {
-                //     std::cout<<"Data Recevied : "<<segment<<std::endl;
-                // }
+                }                
             }                    
         }
         for(const auto& ns:newSockets)

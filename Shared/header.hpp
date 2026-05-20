@@ -12,10 +12,19 @@ using SOCKET = unsigned int;
 
 #define ERROR -1
 
-enum PacketType
+enum PacketType : uint8_t
 {
-    PT_Hello,
-    PT_Replication,
-    PT_Disconnected,
+    PT_Replication=0,
+    PT_MAZE_DATA=1,
+    PT_Hello=2,
+    PT_Disconnected=3,
     PT_MAX
+};
+
+enum ReplicationAction : uint8_t
+{
+    RT_CREATE,
+    RT_UPDATE,
+    RT_DESTORY,
+    MAX
 };

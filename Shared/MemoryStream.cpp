@@ -2,8 +2,8 @@
 #include "LinkingContext.hpp"
 #include <iostream>
 #include <algorithm>
-
 OutputMemoryStream::OutputMemoryStream()
+
     :m_Buffer(nullptr)
     ,m_Head(0)
     ,m_Capacity(0)
@@ -64,8 +64,7 @@ InputMemoryStream::InputMemoryStream(char* _inBuffer,uint32_t _inByteCount)
 }
 
 InputMemoryStream::~InputMemoryStream()
-{
-    std::free(m_Buffer);
+{            
 }
 
 void InputMemoryStream::Read(void* _outData,uint32_t _inByteCounts)
@@ -81,12 +80,13 @@ void InputMemoryStream::Read(void* _outData,uint32_t _inByteCounts)
     m_Head=resultHead;
 }
 
+
 void InputMemoryStream::Read(std::vector<int> _outData)
 {
     size_t element_Count;
     Read(element_Count);
     _outData.resize(element_Count);
-    for(const auto& v: _outData)
+    for(auto& v: _outData)
     {
         Read(v);
     }
