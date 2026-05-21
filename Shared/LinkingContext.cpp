@@ -3,7 +3,7 @@
 #include <assert.h>
 
 LinkingContext::LinkingContext()
-    :m_NextNetworkID(1)
+    :m_NextNetworkID(0)
 {
 }
 

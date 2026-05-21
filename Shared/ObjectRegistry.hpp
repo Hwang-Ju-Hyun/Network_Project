@@ -8,7 +8,7 @@ typedef ObjectPtr ( *ObjectCreationFunc )();
 class ObjectRegistry
 {
 private:
-    ObjectRegistry();
+    ObjectRegistry(){}
     std::unordered_map<uint32_t,ObjectCreationFunc> m_NameToObjectCreationFuncMap;
 public:
     static std::unique_ptr<ObjectRegistry> sInstance;

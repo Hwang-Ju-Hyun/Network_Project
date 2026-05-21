@@ -1,6 +1,8 @@
 #include "ObjectRegistry.hpp"
 #include <cassert>
 
+std::unique_ptr<ObjectRegistry> ObjectRegistry::sInstance=nullptr;
+
 void ObjectRegistry::StaticInit()
 {
     sInstance.reset(new ObjectRegistry());

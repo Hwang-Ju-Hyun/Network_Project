@@ -15,5 +15,7 @@ public:
     }
     static NetworkManager* sInstance;
 public:
+    virtual~NetworkManager(){}
+    virtual void Init(){}
     virtual void ProcessPacket(ClientSession* _cs,InputMemoryStream& _stream){};
 };

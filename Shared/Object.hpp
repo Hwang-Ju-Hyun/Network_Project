@@ -5,6 +5,8 @@
 #include <memory>
 
 class Object;
+class OutputMemoryStream;
+class InputMemoryStream;
 
 #define CLASS_IDENTIFICATION(inCode,inClass)\
 enum{kClassID=inCode};\
@@ -33,6 +35,10 @@ public:
 
     void SetNetworkID(int _netID){m_NetworkID=_netID;}
     int GetNetworkID()const{return m_NetworkID;}
+
+public:
+    virtual void Write(OutputMemoryStream& _outStream);
+    virtual void Read(InputMemoryStream& _outStream);
 };
 
 typedef std::shared_ptr<Object> ObjectPtr;

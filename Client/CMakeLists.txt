@@ -5,6 +5,7 @@ add_executable(Client
     RenderManager.cpp
     Client.cpp
     NetworkManagerClient.cpp
+    ReplicationManagerClient.cpp    
 )
 
 target_link_libraries(Client PRIVATE Shared)

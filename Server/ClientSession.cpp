@@ -62,6 +62,5 @@ void ClientSession::SendPacket(OutputMemoryStream& _payLoadStream)
 
     finalStream.Write(total_size);
     finalStream.Write(_payLoadStream.GetBuffer(),_payLoadStream.GetLength());
-
     m_Socket->Send(finalStream.GetBuffer(),finalStream.GetLength());
 }

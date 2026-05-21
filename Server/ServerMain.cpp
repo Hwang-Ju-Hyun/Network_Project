@@ -6,6 +6,8 @@
 #include "ClientSession.hpp"
 #include "NetworkManager.hpp"
 #include "NetworkManagerServer.hpp"
+#include "Server.hpp"
+#include "ObjectRegistry.hpp"
 
 bool g_LOOP=true;
 
@@ -27,8 +29,12 @@ int main()
 
     uint32_t nextClientSessionID=1;
 
-    NetworkManager::sInstance = new NetworkManagerServer();
+    NetworkManager::sInstance = new NetworkManagerServer();    
+    NetworkManager::GetInstance()->Init();
 
+    ObjectRegistry::sInstance->StaticInit();
+
+    Server s;
     while(g_LOOP)
     {
 
@@ -73,9 +79,9 @@ int main()
                     }
                 }
                 if(currentClientSession!=nullptr)
-                {
-                    
+                {                    
                     bool isAlive=currentClientSession->ProcessIncomingData();
+                    NetworkManagerServer::sInstance->SendOutgoingReplicationPackets();
 
                     if(!isAlive)
                     {

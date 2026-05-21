@@ -12,10 +12,9 @@ add_library(Shared STATIC
     Object.cpp
     Robo.cpp    
     World.cpp
-    Map.cpp
-    ClientSession.cpp
+    Map.cpp    
     NetworkManager.cpp
-    ObjectRegistry.cpp
+    ObjectRegistry.cpp        
 )
 
 target_include_directories(Shared PUBLIC

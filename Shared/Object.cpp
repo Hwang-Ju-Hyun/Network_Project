@@ -1,4 +1,5 @@
 #include "Object.hpp"
+#include "MemoryStream.hpp"
 
 Object::Object()
     :m_posX(-1)
@@ -8,3 +9,14 @@ Object::Object()
     SetName("None");
 }
 
+void Object::Write(OutputMemoryStream& _outStream)
+{    
+    _outStream.Write(GetPosX());
+    _outStream.Write(GetPosY());
+}
+
+void Object::Read(InputMemoryStream& _outStream)
+{    
+    _outStream.Read(m_posX);
+    _outStream.Read(m_posY);
+}
