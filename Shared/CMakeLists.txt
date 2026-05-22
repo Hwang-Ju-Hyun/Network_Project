@@ -14,7 +14,8 @@ add_library(Shared STATIC
     World.cpp
     Map.cpp    
     NetworkManager.cpp
-    ObjectRegistry.cpp        
+    ObjectRegistry.cpp     
+    TCPSession.cpp   
 )
 
 target_include_directories(Shared PUBLIC

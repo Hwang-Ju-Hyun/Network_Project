@@ -98,14 +98,14 @@
 				{
 					"directoryIndex" : 3,
 					"id" : "Server::@20a40c4b36ca103854cb",
-					"jsonFile" : "target-Server-Debug-737ce967c46aee1acda5.json",
+					"jsonFile" : "target-Server-Debug-31688c811faac4f45e0d.json",
 					"name" : "Server",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 1,
 					"id" : "Shared::@a5a0faf7a4ef51a63049",
-					"jsonFile" : "target-Shared-Debug-3685ec4d7e797cf04612.json",
+					"jsonFile" : "target-Shared-Debug-591f650db767aa86c0ff.json",
 					"name" : "Shared",
 					"projectIndex" : 0
 				}

@@ -2,8 +2,8 @@
 #include "MemoryStream.hpp"
 #include <iostream>
 #include "LinkingContext.hpp"
-#include "../Server/ClientSession.hpp"
 #include "ObjectRegistry.hpp"
+
 
 NetworkManagerClient* NetworkManagerClient::sInstance=nullptr;
 
@@ -12,17 +12,17 @@ void NetworkManagerClient::Init()
     m_LinkingContext=new LinkingContext;
 }
 
-void NetworkManagerClient::ProcessPacket(ClientSession* _session,InputMemoryStream& _inStream)
+void NetworkManagerClient::ProcessPacket(InputMemoryStream& _inStream)
 {
     uint8_t packet_type;
     _inStream.Read(packet_type);
     switch (packet_type)
     {
     case PT_Hello:        
-        HandleHello_Packet(_session,_inStream);
+        HandleHello_Packet(_inStream);
         break;
     case PT_Replication:
-        HandleReplication_Packet(_session,_inStream);
+        HandleReplication_Packet(_inStream);
         break;
     case PT_MAZE_DATA:
         /* code */
@@ -35,15 +35,15 @@ void NetworkManagerClient::ProcessPacket(ClientSession* _session,InputMemoryStre
     }
 }
 
-void NetworkManagerClient::HandleHello_Packet(ClientSession* _session,InputMemoryStream& _inStream)
+void NetworkManagerClient::HandleHello_Packet(InputMemoryStream& _inStream)
 {        
     uint32_t SessionID;
     _inStream.Read(SessionID);
-    _session->SetSessionID(SessionID);
-    std::cout<<"서버의 hello packet을 받았습니다 저의 아이디는 : "<<_session->GetSessionID()<<std::endl;
+    //_session->SetSessionID(SessionID);
+    //std::cout<<"서버의 hello packet을 받았습니다 저의 아이디는 : "<<_session->GetSessionID()<<std::endl;
 }
 
-void NetworkManagerClient::HandleReplication_Packet(ClientSession* _session,InputMemoryStream& _inStream)
+void NetworkManagerClient::HandleReplication_Packet(InputMemoryStream& _inStream)
 {
     uint32_t commandCount;
     _inStream.Read(commandCount);

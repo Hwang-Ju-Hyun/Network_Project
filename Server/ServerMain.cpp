@@ -3,13 +3,13 @@
 #include "SocketUtil.hpp"
 #include <cassert>
 #include "SocketAddressFactory.hpp"
-#include "ClientSession.hpp"
+#include "ClientProxy.hpp"
 #include "NetworkManager.hpp"
 #include "NetworkManagerServer.hpp"
 #include "Server.hpp"
 #include "ObjectRegistry.hpp"
 #include "ReplicationManagerServer.hpp"
-
+#include "TCPSession.hpp"
 bool g_LOOP=true;
 
 int main()
@@ -23,19 +23,16 @@ int main()
 
     std::cout<<"Server: Checking for data"<<std::endl<<std::endl;
     std::vector<TCPSocketPtr> readBlockSockets;
-    std::vector<TCPSocketPtr> readAbleSockets;
-    std::vector<ClientSessionPtr> clientSessions;
+    std::vector<TCPSocketPtr> readAbleSockets;        
 
     readBlockSockets.push_back(sockServerTcp);
 
     uint32_t nextClientSessionID=1;
 
-    NetworkManager::sInstance = new NetworkManagerServer();    
-    NetworkManager::GetInstance()->Init();
-
-    ObjectRegistry::sInstance->StaticInit();
-
-    Server s;
+    NetworkManagerServer::sInstance = new NetworkManagerServer();
+    NetworkManagerServer::sInstance->Init();    
+    ObjectRegistry::sInstance->StaticInit();    
+    
     while(g_LOOP)
     {
 
@@ -46,7 +43,7 @@ int main()
 
         std::vector<TCPSocketPtr> newSockets;
 
-        for(const TCPSocketPtr& socket:readAbleSockets)
+        for(TCPSocketPtr& socket:readAbleSockets)
         {
             // socket = 알바생이 "여기 불 켜졌어요" 하고 들고 온 카메라 주소
             // sockServerTcp = 우리가 알고 있는 "정문" 카메라 주소
@@ -60,30 +57,28 @@ int main()
                 {
                     std::cout<<"New Client Connected : "<<newClientAddr.ToString()<<std::endl;
                     newSockets.push_back(newClientSock);
-                    
-                    ClientSessionPtr cs=std::make_shared<ClientSession>(newClientSock,nextClientSessionID);
-                    cs->SetReplicationManager(new ReplicationManagerServer);                    
-                    clientSessions.push_back(cs);
-                    clientSessions[nextClientSessionID]=cs;
-                    nextClientSessionID++;
+                                        
+                    //hello packet을 똑바로 주고 받으면 session id 0이 아니라 갱신이 됨                    
+                    NetworkManagerServer::sInstance->OnClientAccepted(newClientSock);   
                 }
             }
             else
             {
-                ClientSessionPtr currentClientSession=nullptr;
+                ClientProxyPtr currentClientPtr=nullptr;                
                 int foundIdx=-1;
-                for(int i=0;i<clientSessions.size();i++)
-                {
-                    if(clientSessions[i]->GetSocket()->GetSocket()==socket->GetSocket())
-                    {
-                        currentClientSession=clientSessions[i];
-                        foundIdx=clientSessions[i]->GetSessionID();
-                        break;
-                    }
-                }
-                if(currentClientSession!=nullptr)
+                auto proxies = NetworkManagerServer::sInstance->GetPendingProxies();
+                for(int i=0;i<proxies.size();i++)
                 {                    
-                    bool isAlive=currentClientSession->ProcessIncomingData();
+                    if(proxies[i]->GetSession()->GetSocket()==socket)
+                    {
+                        currentClientPtr=proxies[i];
+                        foundIdx=proxies[i]->GetSessionID();
+                        break;
+                    }                    
+                }
+                if(currentClientPtr!=nullptr)
+                {                
+                    bool isAlive=currentClientPtr->GetSession()->ProcessIncomingData();                               
                     NetworkManagerServer::sInstance->SendOutgoingReplicationPackets();
 
                     if(!isAlive)

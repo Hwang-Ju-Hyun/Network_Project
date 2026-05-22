@@ -1,19 +1,8 @@
-#include "ClientSession.hpp"
+#include "TCPSession.hpp"
 #include "MemoryStream.hpp"
-#include <iostream>
 #include "NetworkManager.hpp"
-#include "SocketAddress.hpp"
 
-class ReplicationManagerService;
-
-ClientSession::ClientSession(TCPSocketPtr _socket,uint32_t _sessionID)
-    :m_Socket(_socket)
-    ,m_SessionID(_sessionID)   
-    ,m_ReplicationManager(nullptr)
-{    
-}
-
-bool ClientSession::ProcessIncomingData()
+bool TCPSession::ProcessIncomingData()
 {
     char buffer[1500];    
     int ReadBytesCount = m_Socket->Receive(buffer,sizeof(buffer));
@@ -46,24 +35,25 @@ bool ClientSession::ProcessIncomingData()
         
         InputMemoryStream inputStream(payLoadStart,payloadSize);
 
-
-
-        //1. 첫 데이터를 PacketType으로 읽어냅니다.          
-        NetworkManager::sInstance->ProcessPacket(this,inputStream);                                
-
+        //todo :
+        //1. 첫 데이터를 PacketType으로 읽어냅니다.
+        //함수포인터 델리게이터 형식으로 한 이유는 지금 tcpsession이 clientproxy를 참조를 금하기위해서        
+        if(OnPacketReceived)
+        {
+            OnPacketReceived(inputStream);
+        }
 
         m_ReceiveBuffer.erase(m_ReceiveBuffer.begin(),m_ReceiveBuffer.begin()+packetSize);
     }
     return true;
 }
 
-
-void ClientSession::SendPacket(OutputMemoryStream& _payLoadStream)
+void TCPSession::SendPacket(OutputMemoryStream& _inStream)
 {
-    uint16_t total_size = static_cast<uint16_t>(sizeof(uint16_t))+_payLoadStream.GetLength();
+    uint16_t total_size = static_cast<uint16_t>(sizeof(uint16_t))+_inStream.GetLength();
     OutputMemoryStream finalStream;
 
     finalStream.Write(total_size);
-    finalStream.Write(_payLoadStream.GetBuffer(),_payLoadStream.GetLength());
+    finalStream.Write(_inStream.GetBuffer(),_inStream.GetLength());
     m_Socket->Send(finalStream.GetBuffer(),finalStream.GetLength());
 }

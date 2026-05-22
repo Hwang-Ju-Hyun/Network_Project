@@ -2,7 +2,7 @@
 #include "header.hpp"
 
 class InputMemoryStream;
-class ClientSession;
+class ClientProxy;
 
 //SINGLETON
 class NetworkManager
@@ -17,5 +17,5 @@ public:
 public:
     virtual~NetworkManager(){}
     virtual void Init(){}
-    virtual void ProcessPacket(ClientSession* _cs,InputMemoryStream& _stream){};
+    //virtual void ProcessPacket(ClientProxy* _cs,InputMemoryStream& _stream){};
 };

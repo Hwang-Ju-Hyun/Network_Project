@@ -1,10 +1,9 @@
 #include "NetworkManagerServer.hpp"
 #include "MemoryStream.hpp"
-#include "ClientSession.hpp"
 #include "ObjectRegistry.hpp"
 #include "ReplicationManagerServer.hpp"
-#include "ClientSession.hpp"
-
+#include "ClientProxy.hpp"
+#include "TCPSession.hpp"
 #include <cassert>
 
 NetworkManagerServer* NetworkManagerServer::sInstance=nullptr;
@@ -17,7 +16,7 @@ void  NetworkManagerServer::Init()
     
 }
 
-void NetworkManagerServer::ProcessPacket(ClientSession* _session,InputMemoryStream& _inStream) 
+void NetworkManagerServer::ProcessPacket(ClientProxy* _session,InputMemoryStream& _inStream) 
 {
     uint8_t packet_type;
     _inStream.Read(packet_type);
@@ -27,7 +26,9 @@ void NetworkManagerServer::ProcessPacket(ClientSession* _session,InputMemoryStre
         HandleHello_Packet(_session,_inStream);
         break;
     case PT_Replication:
-        /* code */
+        {
+            int a=0;
+        }
         break;
     case PT_MAZE_DATA:
         /* code */
@@ -41,62 +42,72 @@ void NetworkManagerServer::ProcessPacket(ClientSession* _session,InputMemoryStre
     }
 }
 
-void NetworkManagerServer::HandleHello_Packet(ClientSession* _session,InputMemoryStream& _instream)
+void NetworkManagerServer::HandleHello_Packet(ClientProxy* _proxy,InputMemoryStream& _instream)
 {                
     uint32_t newClientSessionID=nextSessionID;
     
-    _session->SetSessionID(newClientSessionID);
+    m_SessionIdToProxyMap[newClientSessionID]=_proxy;    
+    _proxy->SetSessionID(newClientSessionID);
 
-    m_SessionMap[newClientSessionID]=_session;    
 
     std::cout<<"[서버] 새 클라이언트 접속 승인! 부여된 ID : "<<newClientSessionID<<std::endl;    
     
     nextSessionID++;
 
-    SendHello_Packet(_session);
+    SendHello_Packet(_proxy);
 }
 
-void NetworkManagerServer::SendHello_Packet(ClientSession* _session)
+void NetworkManagerServer::SendHello_Packet(ClientProxy* _proxy)
 {
     OutputMemoryStream outStream;
-    uint8_t packetType=PacketType::PT_Hello;
-    outStream.Write(packetType);
-    outStream.Write(_session->GetSessionID());
-    _session->SendPacket(outStream);
+    uint8_t packetType=PacketType::PT_Hello;    
+
+    outStream.Write(packetType);    
+    outStream.Write(_proxy->GetSessionID());
+    _proxy->SendPacket(outStream);
 }
+
+void NetworkManagerServer::OnClientAccepted(TCPSocketPtr _tcpSocket)
+{
+    TCPSessionPtr newClientSession = std::make_shared<TCPSession>();
+    newClientSession->SetSocket(_tcpSocket);
+    ClientProxyPtr newClientProxy=std::make_shared<ClientProxy>(newClientSession.get(),0);
+
+    m_PendingProxies.push_back(newClientProxy);    
+}
+
 
 void NetworkManagerServer::RegisterObject(ObjectPtr _obj)
 {
     int networkID = m_LinkingContext->GenerateNewNextNeworkID();
     _obj->SetNetworkID(networkID);
-    m_LinkingContext->AddObject(_obj.get(),networkID);
-    
+    m_LinkingContext->AddObject(_obj.get(),networkID);    
 
     //이제 접속한 모든 손님들의 '개인 장부'에 "야, 이거 새로 만들어라"라고 적어둡니다.
-    for(auto iter=m_SessionMap.begin();iter!=m_SessionMap.end();iter++)
+    for(auto iter=m_SessionIdToProxyMap.begin();iter!=m_SessionIdToProxyMap.end();iter++)
     {    
-        ClientSession* session=iter->second;        
-        session->GetReplicaionManager()->ReplicateCreate(networkID);
+        ClientProxy* session=iter->second;        
+        session->GetReplicationManagerServer().ReplicateCreate(networkID);
     }
 }
 
 
 void NetworkManagerServer::SendOutgoingReplicationPackets()
 {
-    for(auto iter = m_SessionMap.begin();iter!=m_SessionMap.end();iter++)
+    for(auto iter = m_SessionIdToProxyMap.begin();iter!=m_SessionIdToProxyMap.end();iter++)
     {
-        ClientSession* session = iter->second;
+        ClientProxy* proxy = iter->second;
         OutputMemoryStream replicateStream;
         PacketType packetType = PacketType::PT_Replication;
         uint8_t packetTypeByte=static_cast<uint8_t>(packetType);
 
         replicateStream.Write(packetTypeByte);        
-        session->GetReplicaionManager()->Write(replicateStream);
+        proxy->GetReplicationManagerServer().Write(replicateStream);
 
         //리플리케이션 장부가 비워져있지 않을때만 보내겠다.
         if(replicateStream.GetLength()>sizeof(uint8_t))
         {
-            session->SendPacket(replicateStream);
+            proxy->SendPacket(replicateStream);
         }    
     }
 }

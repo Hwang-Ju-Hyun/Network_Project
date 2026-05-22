@@ -6,7 +6,7 @@ add_executable(Server
     Server.cpp
     RoboServer.cpp    
     ReplicationManagerServer.cpp
-    ClientSession.cpp
+    ClientProxy.cpp
 )
 
 target_link_libraries(Server PRIVATE Shared)

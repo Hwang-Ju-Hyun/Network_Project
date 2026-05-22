@@ -1,7 +1,10 @@
 #pragma once
 #include "NetworkManager.hpp"
+#include "TCPSession.hpp"
+
 
 class LinkingContext;
+class InputMemoryStream;
 
 class NetworkManagerClient: public NetworkManager
 {
@@ -10,10 +13,10 @@ public:
     ~NetworkManagerClient()override{}
     virtual void Init()override;
 public:    
-    virtual void ProcessPacket(ClientSession* _session,InputMemoryStream& _inStream)override;
+    void ProcessPacket(InputMemoryStream& _inStream);
 private:
-    void HandleHello_Packet(ClientSession* _session,InputMemoryStream& _inStream);
-    void HandleReplication_Packet(ClientSession* _session,InputMemoryStream& _inStream);
+    void HandleHello_Packet(InputMemoryStream& _inStream);
+    void HandleReplication_Packet(InputMemoryStream& _inStream);
 private:
     LinkingContext* m_LinkingContext;
 };

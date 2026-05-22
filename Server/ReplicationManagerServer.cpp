@@ -49,22 +49,22 @@ void ReplicationManagerServer::Write(OutputMemoryStream& _outStream)
         }
         default:
             break;
-        }
-        // 전송이 끝난 명령 처리
-        for (auto& pair : m_Commands)
-        {
-            //교과서 개념 이식: Create 요청을 한 번 보냈으면 다음부턴 Update로 자동 변경!
-            if (pair.second == RT_CREATE)
-            {
-                m_Commands[pair.first] = RT_UPDATE;
-            }
-        }
-
-        // 삭제가 끝난 객체들은 장부에서 완전히 제거
-        for (uint32_t id : m_ObjectToRemove)
-        {
-            m_Commands.erase(id);
-        }
-        m_ObjectToRemove.clear();
+        }        
     }
+    // 전송이 끝난 명령 처리
+    for (auto& pair : m_Commands)
+    {
+        //교과서 개념 이식: Create 요청을 한 번 보냈으면 다음부턴 Update로 자동 변경!
+        if (pair.second == RT_CREATE)
+        {
+            m_Commands[pair.first] = RT_UPDATE;
+        }
+    }
+
+    // 삭제가 끝난 객체들은 장부에서 완전히 제거
+    for (uint32_t id : m_ObjectToRemove)
+    {
+        m_Commands.erase(id);
+    }
+    m_ObjectToRemove.clear();
 }

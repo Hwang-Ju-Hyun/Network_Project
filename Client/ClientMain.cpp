@@ -5,7 +5,8 @@
 #include <cassert>
 #include "MemoryStream.hpp"
 #include "NetworkManagerClient.hpp"
-#include "../Server/ClientSession.hpp"
+#include "TCPSession.hpp"
+
 
 int main()
 { 
@@ -18,26 +19,30 @@ int main()
 
     assert(tcp_sock->Connect(*dest_sock_addr)!=ERROR);            
 
-    ClientSession* serverSession=new ClientSession(tcp_sock,40);
+    //ClientProxy* serverSession=new ClientProxy(tcp_sock,40);
 
-    std::string data;
-    data="Hello I'm Client";               
+    TCPSessionPtr serverSession =std::make_shared<TCPSession>();
+    serverSession->OnPacketReceived=[](InputMemoryStream& inStream){NetworkManagerClient::sInstance->ProcessPacket(inStream);};
+    serverSession->SetSocket(tcp_sock);
 
     OutputMemoryStream payloadStream;
     uint8_t packetType=PacketType::PT_Hello;
+
+    std::string data;
+    data="Hello I'm Client";
         
-    payloadStream.Write(packetType);
+    payloadStream.Write(packetType);    
     payloadStream.Write(data.c_str(),data.length());
-    serverSession->SendPacket(payloadStream);    
+    serverSession->SendPacket(payloadStream);
         
     while(true)
-    {
+    {        
         serverSession->ProcessIncomingData();
         sleep(5);
         OutputMemoryStream rtStream;
         uint8_t packetType=PacketType::PT_Replication;
         rtStream.Write(packetType);
-        serverSession->SendPacket(rtStream);
+        serverSession->SendPacket(rtStream);        
     }
     
 
