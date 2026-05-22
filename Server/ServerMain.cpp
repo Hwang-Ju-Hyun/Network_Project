@@ -8,6 +8,7 @@
 #include "NetworkManagerServer.hpp"
 #include "Server.hpp"
 #include "ObjectRegistry.hpp"
+#include "ReplicationManagerServer.hpp"
 
 bool g_LOOP=true;
 
@@ -61,8 +62,10 @@ int main()
                     newSockets.push_back(newClientSock);
                     
                     ClientSessionPtr cs=std::make_shared<ClientSession>(newClientSock,nextClientSessionID);
-                    nextClientSessionID++;
+                    cs->SetReplicationManager(new ReplicationManagerServer);                    
                     clientSessions.push_back(cs);
+                    clientSessions[nextClientSessionID]=cs;
+                    nextClientSessionID++;
                 }
             }
             else

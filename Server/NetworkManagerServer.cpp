@@ -14,6 +14,7 @@ uint32_t NetworkManagerServer::nextSessionID=1;
 void  NetworkManagerServer::Init()
 {
     m_LinkingContext=new LinkingContext;
+    
 }
 
 void NetworkManagerServer::ProcessPacket(ClientSession* _session,InputMemoryStream& _inStream) 
@@ -74,8 +75,8 @@ void NetworkManagerServer::RegisterObject(ObjectPtr _obj)
     //이제 접속한 모든 손님들의 '개인 장부'에 "야, 이거 새로 만들어라"라고 적어둡니다.
     for(auto iter=m_SessionMap.begin();iter!=m_SessionMap.end();iter++)
     {    
-        ClientSession* session=iter->second;
-        session->m_ReplicationManager.ReplicateCreate(networkID);
+        ClientSession* session=iter->second;        
+        session->GetReplicaionManager()->ReplicateCreate(networkID);
     }
 }
 
@@ -89,8 +90,8 @@ void NetworkManagerServer::SendOutgoingReplicationPackets()
         PacketType packetType = PacketType::PT_Replication;
         uint8_t packetTypeByte=static_cast<uint8_t>(packetType);
 
-        replicateStream.Write(packetTypeByte);
-        session->m_ReplicationManager.Write(replicateStream);
+        replicateStream.Write(packetTypeByte);        
+        session->GetReplicaionManager()->Write(replicateStream);
 
         //리플리케이션 장부가 비워져있지 않을때만 보내겠다.
         if(replicateStream.GetLength()>sizeof(uint8_t))

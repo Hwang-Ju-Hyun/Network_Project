@@ -1,8 +1,9 @@
 #pragma once
 #include "TCPSocket.hpp"
 #include <vector>
-#include "ReplicationManagerServer.hpp"
 
+class ClientSession;
+class ReplicationManagerServer;
 class SocketAddress;
 class InputMemoryStream;
 class OutputMemoryStream;
@@ -24,7 +25,11 @@ public:
     uint32_t GetSessionID()const{return m_SessionID;}          
 
     void SetSessionID(uint32_t _sessionID){m_SessionID=_sessionID;} 
-    ReplicationManagerServer m_ReplicationManager;   
+private:
+    ReplicationManagerServer* m_ReplicationManager;
+public:
+    void SetReplicationManager(ReplicationManagerServer* _rms){m_ReplicationManager=_rms;}
+    ReplicationManagerServer* GetReplicaionManager() const{return m_ReplicationManager;}
 };
 
 using ClientSessionPtr=std::shared_ptr<ClientSession>;

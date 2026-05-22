@@ -4,9 +4,12 @@
 #include "NetworkManager.hpp"
 #include "SocketAddress.hpp"
 
+class ReplicationManagerService;
+
 ClientSession::ClientSession(TCPSocketPtr _socket,uint32_t _sessionID)
     :m_Socket(_socket)
-    ,m_SessionID(_sessionID)    
+    ,m_SessionID(_sessionID)   
+    ,m_ReplicationManager(nullptr)
 {    
 }
 
