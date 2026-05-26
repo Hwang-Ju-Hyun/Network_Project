@@ -81,7 +81,7 @@ void NetworkManagerClient::HandleReplication_Packet(InputMemoryStream& _inStream
                 char* cc=reinterpret_cast<char*>(&classID);
                 std::cout << "[클라] 서버 지시로 객체 생성 및 월드 배치 완료! 종류: " 
                                   << cc[3] << cc[2] << cc[1] << cc[0] 
-                                  << " | NetworkID: " << networkID << " | "<<typeid(newObj).name()<< std::endl;
+                                  << " | NetworkID: " << networkID << " | "<<typeid(newObj).name()<< std::endl;                
             }
         }
             break;

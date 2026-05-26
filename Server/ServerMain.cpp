@@ -10,6 +10,8 @@
 #include "ObjectRegistry.hpp"
 #include "ReplicationManagerServer.hpp"
 #include "TCPSession.hpp"
+#include "Map.hpp"
+
 bool g_LOOP=true;
 
 int main()
@@ -32,15 +34,19 @@ int main()
     NetworkManagerServer::sInstance = new NetworkManagerServer();
     ObjectRegistry::sInstance->StaticInit();
     NetworkManagerServer::sInstance->Init();
-    
+    Map::StaticInit();
+
     while(g_LOOP)
     {
 
-        if(!SocketUtil::Select(&readBlockSockets,&readAbleSockets,nullptr,nullptr,nullptr,nullptr))
-        {
-            continue;
-        }
+        // 🌟 1. 0초 대기(논블로킹)용 timeval 구조체 세팅
+        struct timeval tv;
+        tv.tv_sec = 0;
+        tv.tv_usec = 0;
 
+        if(!SocketUtil::Select(&readBlockSockets,&readAbleSockets,nullptr,nullptr,nullptr,nullptr,&tv))
+            continue;
+        
         std::vector<TCPSocketPtr> newSockets;
 
         for(TCPSocketPtr& socket:readAbleSockets)
@@ -78,17 +84,16 @@ int main()
                 }
                 if(currentClientPtr!=nullptr)
                 {                
-                    bool isAlive=currentClientPtr->GetSession()->ProcessIncomingData();                               
-                    
-                    NetworkManagerServer::sInstance->SendOutgoingReplicationPackets();
+                    bool isAlive=currentClientPtr->GetSession()->ProcessIncomingData();                                                                       
 
                     if(!isAlive)
                     {
                         std::cout<<"ㅈ됬노 ㅅㅂ"<<std::endl;
                     }                    
                 }                
-            }                    
+            }                                
         }
+        NetworkManagerServer::sInstance->SendOutgoingReplicationPackets();
         for(const auto& ns:newSockets)
         {
             readBlockSockets.push_back(ns);

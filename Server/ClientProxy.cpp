@@ -3,7 +3,7 @@
 #include "MemoryStream.hpp"
 #include "NetworkManagerServer.hpp"
 
-ClientProxy::ClientProxy(TCPSession* _session,uint32_t _sessionID)
+ClientProxy::ClientProxy(TCPSessionPtr _session,uint32_t _sessionID)
     :m_TCPSession(_session)
     ,m_SessionID(_sessionID)
 {            
@@ -11,9 +11,7 @@ ClientProxy::ClientProxy(TCPSession* _session,uint32_t _sessionID)
 }
 
 ClientProxy::~ClientProxy()
-{
-    delete m_TCPSession;
-    m_TCPSession=nullptr;
+{   
 }
 
 void ClientProxy::SendPacket(OutputMemoryStream& _inStream)

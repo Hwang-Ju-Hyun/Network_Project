@@ -6,6 +6,7 @@
 #include "TCPSession.hpp"
 #include <cassert>
 #include "RoboServer.hpp"
+#include "Map.hpp"
 
 NetworkManagerServer* NetworkManagerServer::sInstance=nullptr;
 
@@ -51,19 +52,28 @@ void NetworkManagerServer::HandleHello_Packet(ClientProxy* _proxy,InputMemoryStr
     
     m_SessionIdToProxyMap[newClientSessionID]=_proxy;    
     _proxy->SetSessionID(newClientSessionID);
+    nextSessionID++;
+
+    std::cout<<"[서버] 새 클라이언트 접속 승인! 부여된 ID : "<<newClientSessionID<<std::endl;         
+
+    for(auto& obj : m_LinkingContext->GetAllObjects())
+    {
+        uint32_t existingNetworkID=obj.first;
+        _proxy->GetReplicationManagerServer().ReplicateCreate(existingNetworkID);
+    }
 
 
-    std::cout<<"[서버] 새 클라이언트 접속 승인! 부여된 ID : "<<newClientSessionID<<std::endl;            
-
-    ObjectPtr newRobo = ObjectRegistry::sInstance->CreateObject('ROBO');
-
+    ObjectPtr newRobo = ObjectRegistry::sInstance->CreateObject('ROBO');    
     RegisterObject(newRobo);    
     _proxy->SetPossessedNetworkID( newRobo->GetNetworkID() );
     
-    
-    SendHello_Packet(_proxy,newRobo);
+    newRobo->SetPosX(init_row);
+    newRobo->SetPosY(init_col);
 
-    nextSessionID++;
+    init_row+=2;
+    init_col+=2;
+
+    SendHello_Packet(_proxy,newRobo);    
 }
 
 void NetworkManagerServer::SendHello_Packet(ClientProxy* _proxy,ObjectPtr _obj)
@@ -102,14 +112,27 @@ void NetworkManagerServer::HandleInput_Packet(ClientProxy* _session, InputMemory
     
     if (myRobo != nullptr)
     {
-        // 4. 찾았다! 위치를 이동시키자!
-        int currentX = myRobo->GetPosX();
-        int currentY = myRobo->GetPosY();
-        
-        myRobo->SetPos(currentX + moveX, currentY + moveY);
-
-        // 5. 서버 매니저한테 상태 변했다고 장부에 적어두라고 지시 (다음 틱에 뿌려짐)
-        _session->GetReplicationManagerServer().SetStateDirty(myRoboID);        
+        // 1. 현재 좌표에서 클라이언트가 원하는 이동량을 더해 '가상의 다음 좌표'를 구합니다.
+        int nextX = myRobo->GetPosX() + moveX;
+        int nextY = myRobo->GetPosY() + moveY;
+                
+        if (Map::sInstance->IsWalkable(nextX, nextY))
+        {
+            // 승인! 좌표를 변경하고 방송(Broadcast) 명단에 올립니다.
+            myRobo->SetPos(nextX, nextY);
+            
+            for (auto& iter : m_SessionIdToProxyMap)
+            {
+                iter.second->GetReplicationManagerServer().SetStateDirty(myRoboID);
+            } 
+            std::cout << "[서버] 이동 승인: " << nextX << ", " << nextY << std::endl;
+        }
+        else
+        {
+            // 거절! 벽이거나 맵 밖입니다. 
+            // 좌표를 바꾸지 않고 그대로 무시합니다.
+            std::cout << "[서버 보안] 비정상 이동 감지! 차단됨: " << nextX << ", " << nextY << std::endl;
+        }         
     }
 }
 
@@ -117,9 +140,9 @@ void NetworkManagerServer::OnClientAccepted(TCPSocketPtr _tcpSocket)
 {
     TCPSessionPtr newClientSession = std::make_shared<TCPSession>();
     newClientSession->SetSocket(_tcpSocket);
-    ClientProxyPtr newClientProxy=std::make_shared<ClientProxy>(newClientSession.get(),0);
+    ClientProxyPtr newClientProxy=std::make_shared<ClientProxy>(newClientSession,0);
 
-    m_PendingProxies.push_back(newClientProxy);    
+    m_PendingProxies.push_back(newClientProxy); 
 }
 
 

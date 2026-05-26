@@ -35,7 +35,7 @@ void SocketUtil::FileVectorFromSet (std::vector<TCPSocketPtr>*_outSockets,const 
     }
 }
 
-int SocketUtil::Select(const std::vector<TCPSocketPtr>* _inReadSet,std::vector<TCPSocketPtr>* _outReadSet,const std::vector<TCPSocketPtr>* _inWriteSet,std::vector<TCPSocketPtr>* _outWriteSet,const std::vector<TCPSocketPtr>* _inExceptSet,std::vector<TCPSocketPtr>* _outExceptSet)
+int SocketUtil::Select(const std::vector<TCPSocketPtr>* _inReadSet,std::vector<TCPSocketPtr>* _outReadSet,const std::vector<TCPSocketPtr>* _inWriteSet,std::vector<TCPSocketPtr>* _outWriteSet,const std::vector<TCPSocketPtr>* _inExceptSet,std::vector<TCPSocketPtr>* _outExceptSet,struct timeval* _timeOut)
 {
     fd_set read,write,except;
     
@@ -45,7 +45,7 @@ int SocketUtil::Select(const std::vector<TCPSocketPtr>* _inReadSet,std::vector<T
     fd_set* writePtr = FileSetFromVector(write,_inWriteSet,nfds);
     fd_set* exceptPtr = FileSetFromVector(except,_inExceptSet,nfds);
 
-    int to_Ret = select(nfds+1,readPtr,writePtr,exceptPtr,nullptr);
+    int to_Ret = select(nfds+1,readPtr,writePtr,exceptPtr,_timeOut);
 
     if(to_Ret>0)
     {

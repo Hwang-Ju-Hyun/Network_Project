@@ -36,9 +36,7 @@ void ReplicationManagerServer::Write(OutputMemoryStream& _outStream)
             std::cout<<" | Type : "<<a<<std::endl;
             uint32_t classID=obj->GetClassID();            
             uint32_t networkClassID=htonl(classID);
-            _outStream.Write(networkClassID);
-            obj->SetPosX(5);
-            obj->SetPosY(6);
+            _outStream.Write(networkClassID);            
             obj->Write(_outStream);
         }            
             break;
@@ -48,6 +46,7 @@ void ReplicationManagerServer::Write(OutputMemoryStream& _outStream)
             assert(obj!=nullptr);
             obj->Write(_outStream);
         }
+        break;
         case RT_DESTORY:
         {
             m_ObjectToRemove.push_back(networkdID);

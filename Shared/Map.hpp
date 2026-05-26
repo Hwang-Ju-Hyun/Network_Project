@@ -18,4 +18,5 @@ private:
     std::vector<std::vector<char>> m_map;
 public:
     std::vector<std::vector<char>> GetMap();
+    bool IsWalkable(int _x,int _y);
 };

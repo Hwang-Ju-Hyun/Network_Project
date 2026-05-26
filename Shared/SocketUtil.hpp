@@ -23,7 +23,8 @@ public:
 						const std::vector<TCPSocketPtr>* _inWriteSet,
 						std::vector<TCPSocketPtr>* _outWriteSet,
 						const std::vector<TCPSocketPtr>* _inExceptSet,
-						std::vector<TCPSocketPtr>* _outExceptSet);
+						std::vector<TCPSocketPtr>* _outExceptSet,
+                        struct timeval* _timeOut);
 private:
     static fd_set* FileSetFromVector (fd_set& _outSet,const std::vector<TCPSocketPtr>* _inTCPSockets,int& _ioNaxNfds);
     static void FileVectorFromSet (std::vector<TCPSocketPtr>*_outSockets,const std::vector<TCPSocketPtr>* _inSockets,const fd_set& _inSet);

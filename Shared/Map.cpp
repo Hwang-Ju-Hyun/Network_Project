@@ -24,3 +24,21 @@ std::vector<std::vector<char>>Map::GetMap()
 {
     return m_map;
 }
+
+
+bool Map::IsWalkable(int _x,int _y)
+{
+    if(m_map.size()<=0)
+        int a=0;
+    if (_y < 0 || _y >= m_map.size() || _x < 0 || _x >= m_map[_y].size())
+    {
+        return false;
+    }
+    
+    if (m_map[_y][_x] == 'X') 
+    {
+        return false;
+    }
+ 
+    return true;
+}
