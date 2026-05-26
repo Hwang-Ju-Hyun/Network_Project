@@ -6,20 +6,27 @@
 #include "MemoryStream.hpp"
 #include "NetworkManagerClient.hpp"
 #include "TCPSession.hpp"
+#include "ObjectRegistry.hpp"
+#include "RenderManager.hpp"
+#include "InputManager.hpp"
+#include "Map.hpp"
+#include <chrono>
+#include <thread>
 
 
 int main()
 { 
-    NetworkManager::sInstance=new NetworkManagerClient();
-    NetworkManager::sInstance->Init();
-        
+    ObjectRegistry::sInstance->StaticInit();
+    
+    NetworkManagerClient::sInstance=new NetworkManagerClient();
+    NetworkManagerClient::sInstance->Init();            
+
     const std::string destination="127.0.0.1:9999";
     SocketAddressPtr dest_sock_addr= SocketAddressFactory::CreateIPv4FromString(destination);
     TCPSocketPtr tcp_sock = SocketUtil::CreateTCPSocket(AF_INET);
 
     assert(tcp_sock->Connect(*dest_sock_addr)!=ERROR);            
-
-    //ClientProxy* serverSession=new ClientProxy(tcp_sock,40);
+    tcp_sock->SetNonBlockingMode(true);
 
     TCPSessionPtr serverSession =std::make_shared<TCPSession>();
     serverSession->OnPacketReceived=[](InputMemoryStream& inStream){NetworkManagerClient::sInstance->ProcessPacket(inStream);};
@@ -31,20 +38,21 @@ int main()
     std::string data;
     data="Hello I'm Client";
         
-    payloadStream.Write(packetType);    
+    payloadStream.Write(packetType);
     payloadStream.Write(data.c_str(),data.length());
     serverSession->SendPacket(payloadStream);
+
+    Map::StaticInit();
         
     while(true)
     {        
         serverSession->ProcessIncomingData();
-        sleep(5);
-        OutputMemoryStream rtStream;
-        uint8_t packetType=PacketType::PT_Replication;
-        rtStream.Write(packetType);
-        serverSession->SendPacket(rtStream);        
-    }
-    
+
+        InputManager::GetInstance().ProcessInput(serverSession);
+
+        RenderManager::GetInstance().Render();                      
+        std::this_thread::sleep_for(std::chrono::milliseconds(16));
+    }    
 
     return 0;
 }

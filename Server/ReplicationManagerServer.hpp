@@ -19,7 +19,7 @@ public:
         {
             m_Commands[_networkID]=ReplicationAction::RT_UPDATE;
         }
-    }
+    }    
     void ReplicateDestroy(uint32_t _networkID){m_Commands[_networkID]=ReplicationAction::RT_DESTORY;}
 
     void Write(OutputMemoryStream& _outStream);

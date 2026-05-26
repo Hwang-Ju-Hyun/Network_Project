@@ -16,8 +16,8 @@ int main()
 {        
     SocketAddressPtr serverAddr = SocketAddressFactory::CreateIPv4FromString("127.0.0.1:9999");    
     TCPSocketPtr sockServerTcp=SocketUtil::CreateTCPSocket(AF_INET);
-
     assert(sockServerTcp->Bind(*serverAddr)!=ERROR);
+
 
     assert(sockServerTcp->Listen()!=ERROR);
 
@@ -30,8 +30,8 @@ int main()
     uint32_t nextClientSessionID=1;
 
     NetworkManagerServer::sInstance = new NetworkManagerServer();
-    NetworkManagerServer::sInstance->Init();    
-    ObjectRegistry::sInstance->StaticInit();    
+    ObjectRegistry::sInstance->StaticInit();
+    NetworkManagerServer::sInstance->Init();
     
     while(g_LOOP)
     {
@@ -57,9 +57,9 @@ int main()
                 {
                     std::cout<<"New Client Connected : "<<newClientAddr.ToString()<<std::endl;
                     newSockets.push_back(newClientSock);
-                                        
+
                     //hello packet을 똑바로 주고 받으면 session id 0이 아니라 갱신이 됨                    
-                    NetworkManagerServer::sInstance->OnClientAccepted(newClientSock);   
+                    NetworkManagerServer::sInstance->OnClientAccepted(newClientSock);
                 }
             }
             else
@@ -79,6 +79,7 @@ int main()
                 if(currentClientPtr!=nullptr)
                 {                
                     bool isAlive=currentClientPtr->GetSession()->ProcessIncomingData();                               
+                    
                     NetworkManagerServer::sInstance->SendOutgoingReplicationPackets();
 
                     if(!isAlive)

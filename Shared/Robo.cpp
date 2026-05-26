@@ -2,5 +2,6 @@
 
 Robo::Robo()
 {
+    SetName("Robo");
 }
     

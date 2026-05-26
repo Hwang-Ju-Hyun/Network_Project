@@ -43,7 +43,7 @@ void OutputMemoryStream::Write(std::vector<int> _inData)
         Write(v);    
 }
 
-void OutputMemoryStream::Write(Object* _inObj)
+void OutputMemoryStream::Write(ObjectPtr _inObj)
 {
     uint32_t networkID=m_LinkingContext.GetNetworkID(_inObj);
     Write(networkID);
@@ -92,7 +92,7 @@ void InputMemoryStream::Read(std::vector<int> _outData)
     }
 }
 
-void InputMemoryStream::Read(Object* _outObj)
+void InputMemoryStream::Read(ObjectPtr _outObj)
 {
     uint32_t networkID;
     Read(networkID);

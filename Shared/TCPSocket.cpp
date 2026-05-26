@@ -94,3 +94,22 @@ int TCPSocket::Receive(void* _outData,size_t _inLen)
     }        
     return  ReadBytesCount;
 }
+
+
+ bool TCPSocket::SetNonBlockingMode(bool _shouldBeNonBlocking)
+ {
+    int flags = fcntl(m_Socket, F_GETFL, 0);
+    if (flags == -1) return false;
+
+    if (_shouldBeNonBlocking)
+    {
+        flags |= O_NONBLOCK; // 논블로킹 켜기
+    }
+    else
+    {
+        flags &= ~O_NONBLOCK; // 논블로킹 끄기
+    }
+
+    int result = fcntl(m_Socket, F_SETFL, flags);
+    return (result != -1);
+ }

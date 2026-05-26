@@ -15,6 +15,7 @@ public:
     TCPSocketPtr Accept(SocketAddress& _fromAddress);
     int Send(const void* _inData,size_t _inLen);
     int Receive(void* _outData,size_t _inLen);   
+    bool SetNonBlockingMode(bool _shouldBeNonBlocking);
 private:
     SOCKET m_Socket;
     TCPSocket(SOCKET _socket);

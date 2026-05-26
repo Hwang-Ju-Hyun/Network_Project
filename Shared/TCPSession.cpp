@@ -12,7 +12,7 @@ bool TCPSession::ProcessIncomingData()
     // 2. 읽어온 데이터를 수신 버퍼 맨 뒤에 이어 붙입니다.
     m_ReceiveBuffer.insert(m_ReceiveBuffer.end(),buffer,buffer+ReadBytesCount);
     while(true)
-    {
+    {        
         // 조건 A: '전체 길이'를 나타내는 헤더(2바이트)조차 아직 안 왔다면 대기
         if(m_ReceiveBuffer.size()<sizeof(uint16_t))
         {

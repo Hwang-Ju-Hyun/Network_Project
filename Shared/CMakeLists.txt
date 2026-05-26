@@ -16,6 +16,7 @@ add_library(Shared STATIC
     NetworkManager.cpp
     ObjectRegistry.cpp     
     TCPSession.cpp   
+    InputManager.cpp
 )
 
 target_include_directories(Shared PUBLIC

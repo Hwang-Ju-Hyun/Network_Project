@@ -9,8 +9,8 @@ class OutputMemoryStream;
 class InputMemoryStream;
 
 #define CLASS_IDENTIFICATION(inCode,inClass)\
-enum{kClassID=inCode};\
-virtual uint32_t GetClassID()const{return kClassID;}\
+enum:uint32_t{kClassID=inCode};\
+virtual uint32_t GetClassID(){return kClassID;}\
 static Object* CreateInstance(){return static_cast<Object*>(new inClass());}\
 
 class Object

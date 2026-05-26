@@ -2,8 +2,8 @@
 #include "Object.hpp"
 #include <vector>
 
-#define MAX_ROW 50
-#define MAX_COL 50
+#define MAX_ROW 20
+#define MAX_COL 20
 
 class Map : public Object
 {

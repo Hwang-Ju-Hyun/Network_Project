@@ -7,6 +7,7 @@
 #include <cerrno>
 #include <cstring>
 #include <fcntl.h>
+#include <termios.h>
 
 using SOCKET = unsigned int;
 
@@ -18,6 +19,7 @@ enum PacketType : uint8_t
     PT_MAZE_DATA=1,
     PT_Hello=2,
     PT_Disconnected=3,
+    PT_INPUT=4,
     PT_MAX
 };
 

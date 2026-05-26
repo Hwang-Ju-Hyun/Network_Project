@@ -3,8 +3,7 @@
 #include "RoboServer.hpp"
 
 Server::Server()
-{
-    ObjectRegistry::sInstance->RegisterCreationFunction('ROBO',RoboServer::StaticCreate);
+{    
 }
 
 

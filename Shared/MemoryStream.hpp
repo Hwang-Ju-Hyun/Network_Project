@@ -28,7 +28,7 @@ public:
     void Write(std::vector<int> _inData);
     void Write(uint16_t _inData){Write(&_inData,sizeof(uint16_t));}
     void Write(uint8_t _inData){Write(&_inData,sizeof(uint8_t));}
-    void Write(Object* _inObj);
+    void Write(ObjectPtr _inObj);
 private:
     LinkingContext m_LinkingContext;
 };
@@ -54,7 +54,7 @@ public:
     void Read(uint8_t& _outData){Read(&_outData,sizeof(uint8_t));};
     void Read(uint16_t& _outData){Read(&_outData,sizeof(uint16_t));}
     void Read(std::vector<int> _outData);
-    void Read(Object* _outObj);
+    void Read(ObjectPtr _outObj);
 public:
     uint32_t GetRemainDataSize(){return m_Capacity-m_Head;}
 private:

@@ -4,7 +4,6 @@
 #include "TCPSocket.hpp"
 #include "ClientProxy.hpp"
 
-
 class LinkingContext;
 
 class NetworkManagerServer: public NetworkManager
@@ -17,7 +16,9 @@ public:
     void ProcessPacket(ClientProxy* _cs,InputMemoryStream& _stream);
 private:
     void HandleHello_Packet(ClientProxy* _proxy,InputMemoryStream& _instream);
-    void SendHello_Packet(ClientProxy* _proxy);
+    void SendHello_Packet(ClientProxy* _proxy,ObjectPtr _obj);
+
+    void HandleInput_Packet(ClientProxy* _session, InputMemoryStream& _inStream);
 private:
     std::vector<ClientProxyPtr> m_PendingProxies;
     // 접속한 클라이언트들을 관리하는 명부 (ID -> 세션 )    
@@ -29,7 +30,7 @@ public:
     void OnClientAccepted(TCPSocketPtr _tcpSocket);
     std::vector<ClientProxyPtr> GetPendingProxies()const{return m_PendingProxies;}
 public:
+LinkingContext* GetLinkingContext()const{return m_LinkingContext;}
     void RegisterObject(ObjectPtr _obj);
-    LinkingContext* GetLinkingContext()const{return m_LinkingContext;}
     void SendOutgoingReplicationPackets();
 };

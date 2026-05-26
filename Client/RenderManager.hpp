@@ -6,9 +6,6 @@ class RenderManager
 {
 private:
     RenderManager(){}
-    RenderManager& operator = (const RenderManager& _ref){}
-    RenderManager(const RenderManager& _ref){}    
-    ~RenderManager(){}
 public:
     static RenderManager& GetInstance()
     {
@@ -16,5 +13,5 @@ public:
         return rm;
     }
 public:
-    void Render();
+   void Render();
 };

@@ -19,4 +19,6 @@ private:
     void HandleReplication_Packet(InputMemoryStream& _inStream);
 private:
     LinkingContext* m_LinkingContext;
+public:
+    LinkingContext* GetLinkingContext(){return m_LinkingContext;}
 };

@@ -2,10 +2,12 @@
 #include "MemoryStream.hpp"
 #include "NetworkManagerServer.hpp"
 #include <cassert>
+
 /*
 장부(m_Commands)를 쭉 돌면서 "어떤 사물(NetworkID)이 어떤 행동(Action)을 해야 하는지"를 
 스트림에 차곡차곡 적는 역할을 합니다.
 */
+
 void ReplicationManagerServer::Write(OutputMemoryStream& _outStream)
 {
     if(m_Commands.empty())
@@ -28,18 +30,21 @@ void ReplicationManagerServer::Write(OutputMemoryStream& _outStream)
         {
         case RT_CREATE:
         {
-            Object* obj = NetworkManagerServer::sInstance->GetLinkingContext()->GetObject(networkdID);
-            
+            ObjectPtr obj= NetworkManagerServer::sInstance->GetLinkingContext()->GetObject(networkdID);            
             assert(obj!=nullptr);
-
-            _outStream.Write(obj->GetClassID());
-
+            auto a=typeid(*obj).name();
+            std::cout<<" | Type : "<<a<<std::endl;
+            uint32_t classID=obj->GetClassID();            
+            uint32_t networkClassID=htonl(classID);
+            _outStream.Write(networkClassID);
+            obj->SetPosX(5);
+            obj->SetPosY(6);
             obj->Write(_outStream);
         }            
             break;
         case RT_UPDATE:
         {
-            Object* obj = NetworkManagerServer::sInstance->GetLinkingContext()->GetObject(networkdID);
+            ObjectPtr obj = NetworkManagerServer::sInstance->GetLinkingContext()->GetObject(networkdID);
             assert(obj!=nullptr);
             obj->Write(_outStream);
         }

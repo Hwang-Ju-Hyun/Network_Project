@@ -182,6 +182,13 @@ build Shared/CMakeFiles/Shared.dir/TCPSession.cpp.o: CXX_COMPILER__Shared_unscan
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
 
+build Shared/CMakeFiles/Shared.dir/InputManager.cpp.o: CXX_COMPILER__Shared_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Shared/InputManager.cpp || cmake_object_order_depends_target_Shared
+  DEP_FILE = Shared/CMakeFiles/Shared.dir/InputManager.cpp.o.d
+  FLAGS = -g -std=gnu++17 -fPIC
+  INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
+  OBJECT_DIR = Shared/CMakeFiles/Shared.dir
+  OBJECT_FILE_DIR = Shared/CMakeFiles/Shared.dir
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target Shared
@@ -190,7 +197,7 @@ build Shared/CMakeFiles/Shared.dir/TCPSession.cpp.o: CXX_COMPILER__Shared_unscan
 #############################################
 # Link the static library Shared/libShared.a
 
-build Shared/libShared.a: CXX_STATIC_LIBRARY_LINKER__Shared_Debug Shared/CMakeFiles/Shared.dir/SocketAddress.cpp.o Shared/CMakeFiles/Shared.dir/SocketUtil.cpp.o Shared/CMakeFiles/Shared.dir/TCPSocket.cpp.o Shared/CMakeFiles/Shared.dir/UDPSocket.cpp.o Shared/CMakeFiles/Shared.dir/MemoryStream.cpp.o Shared/CMakeFiles/Shared.dir/MemoryBitStream.cpp.o Shared/CMakeFiles/Shared.dir/LinkingContext.cpp.o Shared/CMakeFiles/Shared.dir/SocketAddressFactory.cpp.o Shared/CMakeFiles/Shared.dir/Object.cpp.o Shared/CMakeFiles/Shared.dir/Robo.cpp.o Shared/CMakeFiles/Shared.dir/World.cpp.o Shared/CMakeFiles/Shared.dir/Map.cpp.o Shared/CMakeFiles/Shared.dir/NetworkManager.cpp.o Shared/CMakeFiles/Shared.dir/ObjectRegistry.cpp.o Shared/CMakeFiles/Shared.dir/TCPSession.cpp.o
+build Shared/libShared.a: CXX_STATIC_LIBRARY_LINKER__Shared_Debug Shared/CMakeFiles/Shared.dir/SocketAddress.cpp.o Shared/CMakeFiles/Shared.dir/SocketUtil.cpp.o Shared/CMakeFiles/Shared.dir/TCPSocket.cpp.o Shared/CMakeFiles/Shared.dir/UDPSocket.cpp.o Shared/CMakeFiles/Shared.dir/MemoryStream.cpp.o Shared/CMakeFiles/Shared.dir/MemoryBitStream.cpp.o Shared/CMakeFiles/Shared.dir/LinkingContext.cpp.o Shared/CMakeFiles/Shared.dir/SocketAddressFactory.cpp.o Shared/CMakeFiles/Shared.dir/Object.cpp.o Shared/CMakeFiles/Shared.dir/Robo.cpp.o Shared/CMakeFiles/Shared.dir/World.cpp.o Shared/CMakeFiles/Shared.dir/Map.cpp.o Shared/CMakeFiles/Shared.dir/NetworkManager.cpp.o Shared/CMakeFiles/Shared.dir/ObjectRegistry.cpp.o Shared/CMakeFiles/Shared.dir/TCPSession.cpp.o Shared/CMakeFiles/Shared.dir/InputManager.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = Shared/CMakeFiles/Shared.dir
   POST_BUILD = :
@@ -270,6 +277,13 @@ build Client/CMakeFiles/Client.dir/ReplicationManagerClient.cpp.o: CXX_COMPILER_
   OBJECT_DIR = Client/CMakeFiles/Client.dir
   OBJECT_FILE_DIR = Client/CMakeFiles/Client.dir
 
+build Client/CMakeFiles/Client.dir/RoboClient.cpp.o: CXX_COMPILER__Client_unscanned_Debug /home/hwang-juhyun/Network_Project_Test/Network_Project/Client/RoboClient.cpp || cmake_object_order_depends_target_Client
+  DEP_FILE = Client/CMakeFiles/Client.dir/RoboClient.cpp.o.d
+  FLAGS = -g -std=gnu++17 -fPIE
+  INCLUDES = -I/home/hwang-juhyun/Network_Project_Test/Network_Project/Shared
+  OBJECT_DIR = Client/CMakeFiles/Client.dir
+  OBJECT_FILE_DIR = Client/CMakeFiles/Client.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Client
@@ -278,7 +292,7 @@ build Client/CMakeFiles/Client.dir/ReplicationManagerClient.cpp.o: CXX_COMPILER_
 #############################################
 # Link the executable Client/Client
 
-build Client/Client: CXX_EXECUTABLE_LINKER__Client_Debug Client/CMakeFiles/Client.dir/ClientMain.cpp.o Client/CMakeFiles/Client.dir/RenderManager.cpp.o Client/CMakeFiles/Client.dir/Client.cpp.o Client/CMakeFiles/Client.dir/NetworkManagerClient.cpp.o Client/CMakeFiles/Client.dir/ReplicationManagerClient.cpp.o | Shared/libShared.a || Shared/libShared.a
+build Client/Client: CXX_EXECUTABLE_LINKER__Client_Debug Client/CMakeFiles/Client.dir/ClientMain.cpp.o Client/CMakeFiles/Client.dir/RenderManager.cpp.o Client/CMakeFiles/Client.dir/Client.cpp.o Client/CMakeFiles/Client.dir/NetworkManagerClient.cpp.o Client/CMakeFiles/Client.dir/ReplicationManagerClient.cpp.o Client/CMakeFiles/Client.dir/RoboClient.cpp.o | Shared/libShared.a || Shared/libShared.a
   FLAGS = -g
   LINK_LIBRARIES = Shared/libShared.a
   OBJECT_DIR = Client/CMakeFiles/Client.dir

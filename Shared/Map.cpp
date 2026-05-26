@@ -1,5 +1,7 @@
 #include "Map.hpp"
 
+std::unique_ptr<Map> Map::sInstance = nullptr;
+
 void Map::StaticInit()
 {   
     sInstance.reset(new Map()); 
@@ -13,7 +15,7 @@ Map::Map()
     {
         for(int j=0;j<MAX_COL;j++)
         {
-            m_map[i][j]='X';
+            m_map[i][j]='.';
         }
     }   
 }

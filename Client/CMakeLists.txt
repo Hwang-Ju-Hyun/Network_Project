@@ -6,6 +6,7 @@ add_executable(Client
     Client.cpp
     NetworkManagerClient.cpp
     ReplicationManagerClient.cpp    
+    RoboClient.cpp
 )
 
 target_link_libraries(Client PRIVATE Shared)

@@ -1,3 +1,4 @@
+#pragma once
 #include "Object.hpp"
 
 class Robo:public Object
